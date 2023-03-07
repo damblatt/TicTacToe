@@ -3,8 +3,7 @@
 ## Inhaltsverzeichnis
 
 → [Backlog](#backlog)
-
-​	↳ [User Stories](#user-stories)
+    ↳ [User Stories](#user-stories)
 
 ## Backlog
 
