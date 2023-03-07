@@ -25,38 +25,48 @@ namespace TicTacToe
             // print letters
             for (int i = 0; i < _field.GetLength(1); i++)
             {
-                Console.Write("  " + _alpha[i] + " ");
+                //Console.Write("  " + _alpha[i] + " ");
+                sb.Append("  " + _alpha[i] + " ");
             }
 
-            Console.WriteLine();
-            Console.Write("     -");
+            //Console.WriteLine();
+            sb.Append(Environment.NewLine);
+            //Console.Write("     -");
+            sb.Append("     -");
             for (int y = 0; y < _field.GetLength(1); y++)
             {
-                Console.Write("----");
+                //Console.Write("----");
+                sb.Append("----");
             }
-            Console.WriteLine("");
+            //Console.WriteLine("");
+            sb.Append(Environment.NewLine);
             for (int x = 0; x < _field.GetLength(0); x++)
             {
-                Console.Write("  " + (x + 1).ToString("00") + " | ");
+                //Console.Write("  " + (x + 1).ToString("00") + " | ");
+                sb.Append("  " + (x + 1).ToString("00") + " | ");
 
                 for (int y = 0; y < _field.GetLength(1); y++)
                 {
                     var field = _field[x, y];
-                    Console.Write(" ");
-                    Console.Write(" | ");
+                    //Console.Write(" ");
+                    //Console.Write(" | ");
+                    sb.Append("  | ");
                     double waiting = ((3000 / _field.GetLength(0)) - 70) / _field.GetLength(0);
-                    int waitingTime = Convert.ToInt32(waiting);
-                    System.Threading.Thread.Sleep(waitingTime);
                 }
-                Console.WriteLine("");
-                Console.Write("     -");
+                //Console.WriteLine("");
+                sb.Append(Environment.NewLine);
+                //Console.Write("     -");
+                sb.Append("     -");
                 for (int y = 0; y < _field.GetLength(1); y++)
                 {
-                    Console.Write("----");
+                    //Console.Write("----");
+                    sb.Append("----");
                 }
-                Console.WriteLine("");
-                System.Threading.Thread.Sleep(70);
+                //Console.WriteLine("");
+                sb.Append(Environment.NewLine);
+
             }
+            Console.WriteLine(sb.ToString());
         }
     }
 }
