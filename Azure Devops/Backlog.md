@@ -1,8 +1,6 @@
-# TicTacToe
+# Backlog
 
-## Backlog
-
-### User-Stories
+## User-Stories
 
 1. Als Spieler möchte ich, dass ein Spielfeld automatisch generiert und gedruckt wird, damit ich jederzeit den Spielstand erkenne.
 2. Als Spieler möchte ich, dass ich leere Felder auswählen kann, um sie mit meinem Symbol zu belegen.
@@ -13,7 +11,3 @@
 6. Als Spieler möchte ich, dass angezeigt wird, welcher Spieler am Zug ist, damit keine Verwirrung vorherrscht.
 7. Als Spieler möchte ich, dass bei ungültigen Zügen eine Fehlermeldung ausgegeben wird, damit das Spiel nicht verfälscht wird.
 8. Als Spieler möchte ich, dass das Spiel beendet wird wenn eine Reihe vertikal, horizontal oder diagonal mit dem Symbol eines Spielers belegt ist oder wenn es zu einem Unentschieden kommt, damit das Spiel mit einem klaren Spielstand endet.
-
-### Akzeptanzkriterien
-
-blablabla
