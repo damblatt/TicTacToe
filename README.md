@@ -1,5 +1,11 @@
 # TicTacToe
 
+## Inhaltsverzeichnis
+
+→ [Backlog](#backlog)
+
+​	↳ [User Stories](#user-stories)
+
 ## Backlog
 
 ### User-Stories
@@ -10,7 +16,7 @@
 >
 > `Akzeptanzkriterien`
 >
-> ​	-> (optional) n. Task
+> ​	-> (optional) Tasks
 
 
 
