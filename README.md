@@ -21,14 +21,18 @@
 <br>
 
 1. > Als Spieler möchte ich, dass ein Spielfeld automatisch generiert und gedruckt wird, damit ich jederzeit den Spielstand erkenne.
->
-   > `Das Feld wird automatisch generiert und in einem Konsolenfenster angezeigt.`
+   >
+   > `Das Feld wird im Konsolenfenster angezeigt.`
+   >
+   > `Das Feld wird automatisch generiert.`
 
    <br>
 
 2. > Als Spieler möchte ich, dass ich leere Felder auswählen kann, um sie mit meinem Symbol zu belegen.
->
-   > `Die Spieler können einzelne Felder auswählen und die mit ihrem Symbol befüllen`.
+   >
+   > `Die Spieler können einzelne Felder auswählen`.
+   >
+   > `Die Spieler können das ausgewählte Feld befüllen.`
 
    <br>
 
@@ -61,6 +65,8 @@
 7. > Als Spieler möchte ich, dass bei ungültigen Zügen eine Fehlermeldung ausgegeben wird, damit das Spiel nicht verfälscht wird.
    >
    > `Bei ungültigen Zügen sollte das Spiel Fehlermeldungen ausgeben.`
+   >
+   > `Das Spiel erlaubt keine ungültigen Züge.`
 
    <br>
 
