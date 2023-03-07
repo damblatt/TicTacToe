@@ -3,8 +3,11 @@
 ## Inhaltsverzeichnis
 
 → [Dokumentation](#dokumentation)
+
 &emsp;↳ [07.03.2023](#07.03.2023)
+
 &emsp;→ [Backlog](#backlog)
+
 &emsp;↳ [User Stories](#user-stories)&emsp;
 
 ## Dokumentation
