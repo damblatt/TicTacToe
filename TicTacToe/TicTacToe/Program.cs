@@ -11,6 +11,7 @@ namespace TicTacToe
             **/
             int _fieldSize = 3;
             string[,] _field = new string[_fieldSize, _fieldSize];
+            string _sign = " ";
 
             StringBuilder sb = new StringBuilder();
 
@@ -50,7 +51,7 @@ namespace TicTacToe
                     var field = _field[x, y];
                     //Console.Write(" ");
                     //Console.Write(" | ");
-                    sb.Append("  | ");
+                    sb.Append($"{_sign} | ");
                     double waiting = ((3000 / _field.GetLength(0)) - 70) / _field.GetLength(0);
                 }
                 //Console.WriteLine("");
