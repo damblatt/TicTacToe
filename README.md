@@ -4,7 +4,7 @@
 
 → [Backlog](#backlog)
 
-​    ↳ [User Stories](#user-stories)
+&emsp;↳ [User Stories](#user-stories)
 
 ## Backlog
 
