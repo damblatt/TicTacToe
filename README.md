@@ -94,10 +94,16 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
 ### 07-03-2023 (Sprint 1)
 
-Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und Github.
+#### Sprintziel
+
+Unsere Tasks für den Sprint abarbeiten.
+
+#### Tätigkeit
+
+Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und GitHub.
 
 #### Review & Retrospektive Protokoll
 
-WIP
+In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund dafür ist unser Mangel an Planung wie mir die aufgaben in unserer Freizeit organisieren.
 
-### 14-03-2023
+### 14-03-2023 (Sprint 2)
