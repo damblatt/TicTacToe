@@ -30,7 +30,7 @@
 
 2. > Als Spieler möchte ich, dass ich leere Felder auswählen kann, um sie mit meinem Symbol zu belegen.
    >
-   > `Die Spieler können einzelne Felder auswählen`.
+   > `Die Spieler können einzelne Felder auswählen.`
    >
    > `Die Spieler können das ausgewählte Feld befüllen.`
 
