@@ -15,6 +15,7 @@ namespace TicTacToe
             Generate();
         }
 
+        // REWRITE
         public void Generate()
         {
             StringBuilder sb = new StringBuilder();
@@ -58,11 +59,19 @@ namespace TicTacToe
             Console.WriteLine(sb.ToString());
         }
 
+        /// <summary>
+        /// Sets a cell to the provided player's desired position.
+        /// </summary>
+        /// <param name="_player">The player</param>
+        /// <param name="_position">The cell position</param>
         public void SetCell(Player _player, int[] _position)
         {
 
         }
 
+        /// <summary>
+        /// Checks if there is any winner in the game.
+        /// </summary>
         public void CheckState()
         {
 

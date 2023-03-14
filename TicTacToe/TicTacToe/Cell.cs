@@ -8,13 +8,8 @@ namespace TicTacToe
 {
     public class Cell
     {
-        public int[] CellPosition { get; set; }
+        public int[] Position { get; set; }
         public void Draw()
-        {
-
-        }
-
-        public void AddInput(Player _player, int[] _position)
         {
 
         }
