@@ -25,7 +25,7 @@ namespace TicTacToe
         {
             FieldSize = GetFieldSize();
             CreateField();
-            GetPlayers();
+            AddPlayers();
             this._history = new Stack<Field>();
         }
 
@@ -39,7 +39,7 @@ namespace TicTacToe
 
         }
 
-        private void GetPlayers()
+        private void AddPlayers()
         {
             char p1Symbol = 'X';
             char p2Symbol = 'O';
@@ -55,7 +55,7 @@ namespace TicTacToe
             Console.Write("Player 2 Symbol: ");
             p2Symbol = _helper.ReadSymbol();
 
-            if (p2Name == null) p2Name = "Player 2";
+            if (p2Name == null || p2Name == p1Name) p2Name = "Player 2";
 
             this._player1 = new Player(p1Name, p1Symbol);
             this._player2 = new Player(p2Name, p2Symbol);
