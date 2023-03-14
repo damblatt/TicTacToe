@@ -58,7 +58,7 @@ namespace TicTacToe
             Console.WriteLine(sb.ToString());
         }
 
-        public void SetCell(Player _player, int _xPosition, int _yPosition)
+        public void SetCell(Player _player, int[] _position)
         {
 
         }
