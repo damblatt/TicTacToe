@@ -100,10 +100,9 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
 - Ersten Tasks abarbeiten
 - Organisation bereitstellen
-
 #### Tätigkeit
 
-Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und GitHub.
+Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure DevOps eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vor allem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und GitHub.
 
 #### Review & Retrospektive Protokoll
 
@@ -115,7 +114,7 @@ In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund daf
 
 - Objektorientierte Umsetzung
   - Alle Klassen & Methoden bereitstellen
-- Funkionierendes Spielfeld
+- Funktionierendes Spielfeld
   - Benutzerdefinierte Feldgrösse
   - Spielereingaben
   - Fehlermeldungen bei ungültigen Eingaben
