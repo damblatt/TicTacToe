@@ -10,15 +10,19 @@
 
 &emsp;↳ [User Stories](#user-stories)&emsp;
 
-## Dokumentation
 
-### 07-03-2023
 
-Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und Github.
+## Projekt
 
-## Backlog
 
-### User-Stories
+
+### Backlog
+
+####  Produktvision
+
+Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictactoe Spielen kann. Was unser Produkt jedoch hervorhebt ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann und und die Grösse des Spielfeldes.
+
+#### User-Stories
 
 > **Format**
 >
@@ -83,5 +87,17 @@ Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind ers
 8. > Als Spieler möchte ich, dass das Spiel beendet wird wenn eine Reihe vertikal, horizontal oder diagonal mit dem Symbol eines Spielers belegt ist oder wenn es zu einem Unentschieden kommt, damit das Spiel mit einem klaren Spielstand endet.
    >
    > `Das Spiel kann durch die TicTacToe Regeln gewonnen bzw. verloren werden.`
+
    
-   
+
+## Dokumentation
+
+### 07-03-2023 (Sprint 1)
+
+Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und Github.
+
+#### Review & Retrospektive Protokoll
+
+WIP
+
+### 14-03-2023
