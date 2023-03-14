@@ -24,8 +24,8 @@ namespace TicTacToe
         public int[] GetInput()
         {
             int[] position = new int[2];
-            position[0] = _helper.ReadInt(1, $"Player {this.Name}, X: ");
-            position[1] = _helper.ReadInt(1, $"Player {this.Name}, Y: ");
+            position[0] = _helper.ReadInt(1, $"Player {this.Name}, X: ") - 1;
+            position[1] = _helper.ReadInt(1, $"Player {this.Name}, Y: ") - 1;
             return position;
         }
 

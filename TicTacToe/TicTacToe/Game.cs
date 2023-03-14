@@ -15,6 +15,7 @@ namespace TicTacToe
         private Stack<Field> _history;
         private GameState _state;
         private Utility _helper = new Utility();
+        private Player _currentPlayer;
 
         enum GameState
         {
@@ -27,11 +28,33 @@ namespace TicTacToe
             CreateField();
             GetPlayers();
             this._history = new Stack<Field>();
+            this._state = GameState.OVER;
+
+            Random rnd = new Random();
+            this._currentPlayer = rnd.Next(100) < 50 ? _player1 : _player2;
         }
 
         public void Start()
         {
-           
+            this._state = GameState.RUNNING;
+
+            Console.Clear();
+
+            // Game Loop
+            while (this._state == GameState.RUNNING)
+            {
+                this._field.Draw();
+
+                int[] position = this._currentPlayer.GetInput();
+                this._field.SetCell(this._currentPlayer, position);
+
+                if (this._currentPlayer == this._player1)
+                    this._currentPlayer = this._player2;
+                else 
+                    this._currentPlayer = _player1;
+
+                Console.Clear();
+            }
         }
 
         public void Stop()
