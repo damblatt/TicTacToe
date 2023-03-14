@@ -11,12 +11,12 @@ namespace TicTacToe
         public string Name { get; set; }
         public int Score { get; set; } = 0;
         public bool HasTurn { get; set; } = false;
-        public string Symbol { get; set; }
+        public char Symbol { get; set; }
         public bool HasWon { get; set; } = false;
 
         private Utility _helper = new Utility();
 
-        public Player(String _name, String _symbol)
+        public Player(String _name, Char _symbol)
         { 
             this.Name = _name;
             this.Symbol = _symbol;
@@ -24,8 +24,8 @@ namespace TicTacToe
         public int[] GetInput()
         {
             int[] position = new int[2];
-            position[0] = _helper.ReadInt(1, $"Player {this.Name}, X: ");
-            position[1] = _helper.ReadInt(1, $"Player {this.Name}, Y: ");
+            position[0] = _helper.ReadInt(1);
+            position[1] = _helper.ReadInt(1);
             return position;
         }
 

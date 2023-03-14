@@ -41,21 +41,21 @@ namespace TicTacToe
 
         private void GetPlayers()
         {
+            char p1Symbol = 'X';
+            char p2Symbol = 'O';
             Console.Write("Player 1 Name: ");
             string? p1Name = Console.ReadLine();
             Console.Write("Player 1 Symbol: ");
-            string? p1Symbol = Console.ReadLine();
+            p1Symbol = _helper.ReadSymbol();
 
             if (p1Name == null) p1Name = "Player 1";
-            if (p1Symbol == null) p1Symbol = "X";
 
             Console.Write("Player 2 Name: ");
             string? p2Name = Console.ReadLine();
             Console.Write("Player 2 Symbol: ");
-            string? p2Symbol = Console.ReadLine();
+            p2Symbol = _helper.ReadSymbol();
 
             if (p2Name == null) p2Name = "Player 2";
-            if (p2Symbol == null) p2Symbol = "O";
 
             this._player1 = new Player(p1Name, p1Symbol);
             this._player2 = new Player(p2Name, p2Symbol);
@@ -63,7 +63,7 @@ namespace TicTacToe
 
         public int GetFieldSize()
         {
-            return _helper.ReadInt(3, "Game field size: ");
+            return _helper.ReadInt(3);
         }
 
         public void CreateField()
