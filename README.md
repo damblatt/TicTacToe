@@ -10,11 +10,13 @@
 
 &emsp;↳ [User Stories](#user-stories)&emsp;
 
+→ [Dokumentation](#dokumentation)
 
+&emsp;↳ [Sprint 1](#07-03-2023-(Sprint-1))
+
+&emsp;↳ [Sprint 2](#14-03-2023-(Sprint-2))
 
 ## Projekt
-
-
 
 ### Backlog
 
@@ -94,10 +96,32 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
 ### 07-03-2023 (Sprint 1)
 
-Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und Github.
+#### Sprintziele
+
+- Ersten Tasks abarbeiten
+- Organisation bereitstellen
+
+#### Tätigkeit
+
+Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure Devops eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vorallem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und GitHub.
 
 #### Review & Retrospektive Protokoll
 
-WIP
+In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund dafür ist unser Mangel an Planung wie mir die aufgaben in unserer Freizeit organisieren. Trotzdem wurde die Organisation sehr weit gebracht, was uns beim nächsten Sprint sicher sehr helfen wird.
 
-### 14-03-2023
+### 14-03-2023 (Sprint 2)
+
+#### Sprintziele
+
+- Objektorientierte Umsetzung
+  - Alle Klassen & Methoden bereitstellen
+- Funkionierendes Spielfeld
+  - Benutzerdefinierte Feldgrösse
+  - Spielereingaben
+  - Fehlermeldungen bei ungültigen Eingaben
+
+#### Tätigkeit
+
+
+
+#### Review & Retrospektive Protokoll
