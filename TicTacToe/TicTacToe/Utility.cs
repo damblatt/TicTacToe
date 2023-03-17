@@ -31,5 +31,10 @@ namespace TicTacToe
             }
             return _chr;
         }
+
+        public void Write(string word)
+        {
+            Console.Write(word);
+        }
     }
 }

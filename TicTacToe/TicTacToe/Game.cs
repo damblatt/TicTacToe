@@ -63,6 +63,7 @@ namespace TicTacToe
 
         public int GetFieldSize()
         {
+            _helper.Write("Enter the field size: ");
             return _helper.ReadInt(3);
         }
 

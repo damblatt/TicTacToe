@@ -24,38 +24,44 @@ namespace TicTacToe
 
             sb.Append($"{ Environment.NewLine}     ");
 
-            // letters
-            for (int i = 0; i < Cells.GetLength(1); i++)
+            // column header (letters)
             {
-                sb.Append("  " + _alpha[i] + " ");
-            }
-
-            // horizontal lines
-            sb.Append($"{Environment.NewLine}     -");
-            for (int y = 0; y < Cells.GetLength(1); y++)
-            {
-                sb.Append("----");
-            }
-            sb.Append(Environment.NewLine);
-            for (int x = 0; x < Cells.GetLength(0); x++)
-            {
-                sb.Append("  " + (x + 1).ToString("00") + " | ");
-
-                for (int y = 0; y < Cells.GetLength(1); y++)
+                for (int i = 0; i < Cells.GetLength(1); i++)
                 {
-                    var field = Cells[x, y];
-                    sb.Append($"{_emptyField} | ");
-                    double waiting = ((3000 / Cells.GetLength(0)) - 70) / Cells.GetLength(0);
+                    sb.Append("  " + _alpha[i] + " ");
                 }
-                sb.Append(Environment.NewLine);
-                sb.Append("     -");
+
+                sb.Append($"{Environment.NewLine}     -");
                 for (int y = 0; y < Cells.GetLength(1); y++)
                 {
                     sb.Append("----");
                 }
-                sb.Append(Environment.NewLine);
-
             }
+
+            // rows (numbers and fields)
+            {
+                sb.Append(Environment.NewLine);
+                for (int x = 0; x < Cells.GetLength(0); x++)
+                {
+                    sb.Append("  " + (x + 1).ToString("00") + " | ");
+
+                    for (int y = 0; y < Cells.GetLength(1); y++)
+                    {
+                        var field = Cells[x, y];
+                        sb.Append($"{_emptyField} | ");
+                        double waiting = ((3000 / Cells.GetLength(0)) - 70) / Cells.GetLength(0);
+                    }
+                    sb.Append(Environment.NewLine);
+                    sb.Append("     -");
+                    for (int y = 0; y < Cells.GetLength(1); y++)
+                    {
+                        sb.Append("----");
+                    }
+                    sb.Append(Environment.NewLine);
+
+                }
+            }
+
             Console.WriteLine(sb.ToString());
         }
 
