@@ -10,8 +10,9 @@ namespace TicTacToe
     {
         public int FieldSize { get; set; }
         private Field _field;
-        private Player _player1;
-        private Player _player2;
+        private List<Player> _listOfPlayers;
+        private Player _playerOne;
+        private Player _playerTwo;
         private Stack<Field> _history;
         private GameState _state;
         private Utility _helper = new Utility();
@@ -21,12 +22,15 @@ namespace TicTacToe
             RUNNING, OVER
         }
 
+        /// <summary>
+        /// Creating a (new) game creates a field and adds players to the game.
+        /// </summary>
         public Game()
         {
             FieldSize = GetFieldSize();
             CreateField();
             AddPlayers();
-            this._history = new Stack<Field>();
+            _history = new Stack<Field>();
         }
 
         public void Start()
@@ -41,24 +45,27 @@ namespace TicTacToe
 
         private void AddPlayers()
         {
-            char p1Symbol = 'X';
-            char p2Symbol = 'O';
-            Console.Write("Player 1 Name: ");
-            string? p1Name = Console.ReadLine();
-            Console.Write("Player 1 Symbol: ");
-            p1Symbol = _helper.ReadSymbol();
+            _playerOne = new Player(1);
+            _playerTwo = new Player(2);
+            _listOfPlayers.Add(_playerOne);
+            _listOfPlayers.Add(_playerTwo);
 
-            if (p1Name == null) p1Name = "Player 1";
+            CustomizePlayerProfiles();
+            if (_playerTwo.Name == _playerOne.Name) _playerTwo.Name = "Player 2";
+        }
 
-            Console.Write("Player 2 Name: ");
-            string? p2Name = Console.ReadLine();
-            Console.Write("Player 2 Symbol: ");
-            p2Symbol = _helper.ReadSymbol();
-
-            if (p2Name == null || p2Name == p1Name) p2Name = "Player 2";
-
-            this._player1 = new Player(p1Name, p1Symbol);
-            this._player2 = new Player(p2Name, p2Symbol);
+        public void CustomizePlayerProfiles()
+        {
+            foreach (Player player in _listOfPlayers)
+            {
+                _helper.Write($"{player.Name}, you can now enter a custom name if you want to: ");
+                string? playerName = Console.ReadLine().Trim();
+                if (playerName != null && playerName != "")
+                {
+                    player.Name = playerName;
+                }
+                player.Symbol = _helper.ReadSymbol();
+            }
         }
 
         public int GetFieldSize()
