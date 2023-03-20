@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace TicTacToe
     {
         public int FieldSize { get; set; }
         private Field _field;
-        private List<Player> _listOfPlayers;
+        private List<Player> _listOfPlayers = new List<Player>();
         private Player _playerOne;
         private Player _playerTwo;
         private Stack<Field> _history;
@@ -51,6 +52,7 @@ namespace TicTacToe
             _listOfPlayers.Add(_playerTwo);
 
             CustomizePlayerProfiles();
+            SetIndividualPlayerInformation();
             if (_playerTwo.Name == _playerOne.Name) _playerTwo.Name = "Player 2";
         }
 
@@ -58,14 +60,28 @@ namespace TicTacToe
         {
             foreach (Player player in _listOfPlayers)
             {
-                _helper.Write($"{player.Name}, you can now enter a custom name if you want to: ");
-                string? playerName = Console.ReadLine().Trim();
-                if (playerName != null && playerName != "")
+                // get name
                 {
-                    player.Name = playerName;
+                    _helper.Write($"{player.Name}, you can now enter a custom name if you want to: ");
+                    string? playerName = Console.ReadLine().Trim();
+                    if (playerName != null && playerName != "")
+                    {
+                        player.Name = playerName;
+                    }
                 }
-                player.Symbol = _helper.ReadSymbol();
+
+                // get symbol
+                {
+                    _helper.Write($"{player.Name}, please enter a symbol: ");
+                    player.Symbol = _helper.ReadSymbol();
+                }
             }
+        }
+
+        public void SetIndividualPlayerInformation()
+        {
+            if (_playerTwo.Name == _playerOne.Name && _playerOne.Name != "Player 2") _playerTwo.Name = "Player 2";
+            else if (_playerTwo.Name == _playerOne.Name && _playerOne.Name == "Player 2") _playerOne.Name = "Player 1";
         }
 
         public int GetFieldSize()

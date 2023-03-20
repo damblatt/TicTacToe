@@ -19,16 +19,23 @@ namespace TicTacToe
         public Player(int numberOfPlayer)
         {
             Name = $"Player {numberOfPlayer}";
+            if (numberOfPlayer == 1)
+            {
+                Symbol = 'X';
+            } else if (numberOfPlayer == 2)
+            {
+                Symbol = 'O';
+            }
             switch (numberOfPlayer)
             {
                 case 1: Symbol = 'X'; break;
                 case 2: Symbol = 'O'; break;
+                default: throw new Exception($"Illegal player number: {numberOfPlayer}");
             }
-            throw new Exception($"Illegal player number: {numberOfPlayer}");
         }
 
-        public Player(String _name, Char _symbol)
-        { 
+        public Player(string _name, char _symbol)
+        {
             Name = _name;
             Symbol = _symbol;
         }
