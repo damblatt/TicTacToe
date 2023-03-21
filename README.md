@@ -117,6 +117,10 @@ In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund daf
 
 #### Tätigkeit
 
-
+Den zweiten Sprint starteten wir gemütlich und waren abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht relativ viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
 
 #### Review & Retrospektive Protokoll
+
+In diesem Sprint haben wir unser Sprintziel erreicht.
+wir haben dieses Mal uns besser ausserhalb von Unterricht organisiert. das einzige Problem was aufgetreten ist, wir hatten Probleme mit Rücksicht auf die anderen GitHub zu arbeiten.
+
