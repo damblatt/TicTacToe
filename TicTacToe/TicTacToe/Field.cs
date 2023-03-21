@@ -4,6 +4,7 @@ namespace TicTacToe
 {
     public class Field
     {
+        Utility _helper = new Utility();
         public int Size { get; set; }
         public Cell[,] Cells { get; set; }
 
@@ -13,31 +14,19 @@ namespace TicTacToe
             Cells = new Cell[Size, Size];
         }
 
-        // REWRITE
-        public void Draw()
+        public void PrintField()
         {
             StringBuilder sb = new StringBuilder();
             string _emptyField = " ";
             char[] _alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
-            sb.Append($"{ Environment.NewLine}     ");
+            sb.Append($"{Environment.NewLine}     ");
 
             // column header (letters)
             {
                 for (int i = 0; i < Cells.GetLength(1); i++)
                 {
-<<<<<<< HEAD
-                    var field = Cells[x, y];
-
-                    if (field != null && !field.Free)
-                        sb.Append($"{field.Symbol} | ");
-                    else
-                        sb.Append($"{_emptyField} | ");
-
-                    double waiting = ((3000 / Cells.GetLength(0)) - 70) / Cells.GetLength(0);
-=======
                     sb.Append("  " + _alpha[i] + " ");
->>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
                 }
 
                 sb.Append($"{Environment.NewLine}     -");
@@ -70,8 +59,7 @@ namespace TicTacToe
 
                 }
             }
-
-            Console.WriteLine(sb.ToString());
+            _helper.Write($"{sb.ToString()}\n");
         }
 
         /// <summary>

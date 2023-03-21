@@ -9,15 +9,15 @@ namespace TicTacToe
 {
     public class Game
     {
+        private Utility _helper = new Utility();
         public int FieldSize { get; set; }
         private Field _field;
         private List<Player> _listOfPlayers = new List<Player>();
-        private Player _playerOne;
-        private Player _playerTwo;
+        public Player PlayerOne;
+        public Player PlayerTwo;
+        private Player _currentPlayer;
         private Stack<Field> _history;
         private GameState _state;
-        private Utility _helper = new Utility();
-        private Player _currentPlayer;
 
         enum GameState
         {
@@ -31,17 +31,11 @@ namespace TicTacToe
         {
             FieldSize = GetFieldSize();
             CreateField();
-<<<<<<< HEAD
-            GetPlayers();
-            this._history = new Stack<Field>();
-            this._state = GameState.OVER;
-
-            Random rnd = new Random();
-            this._currentPlayer = rnd.Next(100) < 50 ? _player1 : _player2;
-=======
             AddPlayers();
             _history = new Stack<Field>();
->>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
+            _state = GameState.OVER;
+
+            SetCurrentPlayer();
         }
 
         public void Start()
@@ -53,7 +47,7 @@ namespace TicTacToe
             // Game Loop
             while (this._state == GameState.RUNNING)
             {
-                this._field.Draw();
+                _field.PrintField();
 
                 int[] position = this._currentPlayer.GetInput();
 
@@ -62,10 +56,10 @@ namespace TicTacToe
 
                 this._field.SetCell(this._currentPlayer, position);
 
-                if (this._currentPlayer == this._player1)
-                    this._currentPlayer = this._player2;
+                if (_currentPlayer == this.PlayerOne)
+                    _currentPlayer = this.PlayerTwo;
                 else 
-                    this._currentPlayer = _player1;
+                    _currentPlayer = PlayerOne;
 
                 Console.Clear();
             }
@@ -78,14 +72,14 @@ namespace TicTacToe
 
         private void AddPlayers()
         {
-            _playerOne = new Player(1);
-            _playerTwo = new Player(2);
-            _listOfPlayers.Add(_playerOne);
-            _listOfPlayers.Add(_playerTwo);
+            PlayerOne = new Player(1);
+            PlayerTwo = new Player(2);
+            _listOfPlayers.Add(PlayerOne);
+            _listOfPlayers.Add(PlayerTwo);
 
             CustomizePlayerProfiles();
             SetIndividualPlayerInformation();
-            if (_playerTwo.Name == _playerOne.Name) _playerTwo.Name = "Player 2";
+            if (PlayerTwo.Name == PlayerOne.Name) PlayerTwo.Name = "Player 2";
         }
 
         public void CustomizePlayerProfiles()
@@ -112,8 +106,27 @@ namespace TicTacToe
 
         public void SetIndividualPlayerInformation()
         {
-            if (_playerTwo.Name == _playerOne.Name && _playerOne.Name != "Player 2") _playerTwo.Name = "Player 2";
-            else if (_playerTwo.Name == _playerOne.Name && _playerOne.Name == "Player 2") _playerOne.Name = "Player 1";
+            SetIndividualNames();
+            SetIndividualSymbols();
+        }
+
+        public void SetIndividualNames()
+        {
+            if (PlayerTwo.Name == PlayerOne.Name && PlayerOne.Name != "Player 2") PlayerTwo.Name = "Player 2";
+            else if (PlayerTwo.Name == PlayerOne.Name && PlayerOne.Name == "Player 2") PlayerOne.Name = "Player 1";
+        }
+
+        public void SetIndividualSymbols()
+        {
+            if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol != 'O') PlayerTwo.Symbol = 'O';
+            else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';
+        }
+
+        public void SetCurrentPlayer()
+        {
+            Random rnd = new Random();
+            _currentPlayer = rnd.Next(100) < 50 ? PlayerOne : PlayerTwo;
+            _history = new Stack<Field>();
         }
 
         public int GetFieldSize()
