@@ -4,7 +4,6 @@ namespace TicTacToe
 {
     public class Field
     {
-        Utility _helper = new Utility();
         public int Size { get; set; }
         public Cell[,] Cells { get; set; }
 
@@ -12,6 +11,18 @@ namespace TicTacToe
         {
             Size = _size;
             Cells = new Cell[Size, Size];
+            FillFieldWithCells();
+        }
+
+        public void FillFieldWithCells()
+        {
+            for (int y = 0; y < Size; y++)
+            {
+                for(int x = 0; x < Size; x++)
+                {
+                    Cells[x, y] = new Cell();
+                }
+            }
         }
 
         public void PrintField()
@@ -45,9 +56,7 @@ namespace TicTacToe
 
                     for (int y = 0; y < Cells.GetLength(1); y++)
                     {
-                        var field = Cells[x, y];
-                        sb.Append($"{_emptyField} | ");
-                        double waiting = ((3000 / Cells.GetLength(0)) - 70) / Cells.GetLength(0);
+                        sb.Append($"{Cells[x, y].Symbol} | ");
                     }
                     sb.Append(Environment.NewLine);
                     sb.Append("     -");
@@ -67,23 +76,19 @@ namespace TicTacToe
         /// </summary>
         /// <param name="_player">The player</param>
         /// <param name="_position">The cell position</param>
-        public void SetCell(Player _player, int[] _position)
+        public void SetCell(Player _player, Coordinate _coordinate)
         {
-            Cell cell = this.Cells[_position[0], _position[1]];
-
-            if (cell != null)
-            {
-                if (cell.Free) { 
-                    cell.Symbol = _player.Symbol;
-                    cell.Position = _position;
-                    cell.Free = false;
-                }
+            Cell cell = Cells[_coordinate.Y, _coordinate.X];
+            if (cell != null && cell.Free){
+                cell.Symbol = _player.Symbol;
+                cell.Position = _coordinate;
+                cell.Free = false;
             } else
             {
-                this.Cells[_position[0], _position[1]] = new Cell();
-                this.Cells[_position[0], _position[1]].Symbol = _player.Symbol;
-                this.Cells[_position[0], _position[1]].Position = _position;
-                this.Cells[_position[0], _position[1]].Free = false;
+                Cells[_coordinate.Y, _coordinate.X] = new Cell();
+                Cells[_coordinate.Y, _coordinate.X].Symbol = _player.Symbol;
+                Cells[_coordinate.Y, _coordinate.X].Position = _coordinate;
+                Cells[_coordinate.Y, _coordinate.X].Free = false;
             }
         }
 

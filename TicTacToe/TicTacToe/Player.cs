@@ -13,6 +13,7 @@ namespace TicTacToe
         public int Score { get; set; } = 0;
         public bool HasTurn { get; set; } = false;
         public bool HasWon { get; set; } = false;
+        public Game Game{ get; set; }
 
         private Utility _helper = new Utility();
 
@@ -40,14 +41,18 @@ namespace TicTacToe
             Symbol = _symbol;
         }
 
-        public int[] GetInput()
+        public Coordinate GetInput()
         {
+            bool _isValid = false;
+            Coordinate _coordinate;
             int[] position = new int[2];
-            Utility.Write($"{Name}, x position: ");
-            position[0] = Utility.ReadInt(1);
-            Utility.Write($"{Name}, y position: ");
-            position[1] = Utility.ReadInt(1);
-            return position;
+            Utility.Write($"{Name}, enter field: ");
+            string input = Console.ReadLine();
+            do
+            {
+                (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(input, 3);
+            } while (!_isValid);
+            return _coordinate;
         }
 
         public void AddScore(int _score)

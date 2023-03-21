@@ -9,15 +9,14 @@ namespace TicTacToe
 {
     public class Game
     {
-        private Utility _helper = new Utility();
-        public int FieldSize { get; set; }
+        public static int FieldSize { get; set; } = 3;
         private Field _field;
         private List<Player> _listOfPlayers = new List<Player>();
         public Player PlayerOne;
         public Player PlayerTwo;
         private Player _currentPlayer;
-        private Stack<Field> _history;
         private GameState _state;
+        private Stack<Field> _history;
 
         enum GameState
         {
@@ -29,7 +28,6 @@ namespace TicTacToe
         /// </summary>
         public Game()
         {
-            FieldSize = GetFieldSize();
             CreateField();
             AddPlayers();
             _history = new Stack<Field>();
@@ -49,12 +47,15 @@ namespace TicTacToe
             {
                 _field.PrintField();
 
-                int[] position = this._currentPlayer.GetInput();
+                Coordinate _coordinate = _currentPlayer.GetInput();
 
-                position[0] = Math.Clamp(position[0], 0, this.FieldSize - 1);
-                position[1] = Math.Clamp(position[0], 0, this.FieldSize - 1);
+                //position[0] = Math.Clamp(position[0], 0, this.FieldSize - 1);
+                //_coordinate.X = Math.Clamp(_coordinate.X, 0, this.FieldSize - 1);
+                //_coordinate.Y = Math.Clamp(_coordinate.X, 0, this.FieldSize - 1);
+                //position[1] = Math.Clamp(position[0], 0, this.FieldSize - 1);
 
-                this._field.SetCell(this._currentPlayer, position);
+                //this._field.SetCell(this._currentPlayer, position);
+                _field.SetCell(_currentPlayer, _coordinate);
 
                 if (_currentPlayer == this.PlayerOne)
                     _currentPlayer = this.PlayerTwo;
