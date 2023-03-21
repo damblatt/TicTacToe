@@ -11,12 +11,10 @@ namespace TicTacToe
         {
             Size = _size;
             Cells = new Cell[Size, Size];
-
-            Generate();
         }
 
         // REWRITE
-        public void Generate()
+        public void Draw()
         {
             StringBuilder sb = new StringBuilder();
             string _emptyField = " ";
@@ -28,7 +26,18 @@ namespace TicTacToe
             {
                 for (int i = 0; i < Cells.GetLength(1); i++)
                 {
+<<<<<<< HEAD
+                    var field = Cells[x, y];
+
+                    if (field != null && !field.Free)
+                        sb.Append($"{field.Symbol} | ");
+                    else
+                        sb.Append($"{_emptyField} | ");
+
+                    double waiting = ((3000 / Cells.GetLength(0)) - 70) / Cells.GetLength(0);
+=======
                     sb.Append("  " + _alpha[i] + " ");
+>>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
                 }
 
                 sb.Append($"{Environment.NewLine}     -");
@@ -72,7 +81,22 @@ namespace TicTacToe
         /// <param name="_position">The cell position</param>
         public void SetCell(Player _player, int[] _position)
         {
+            Cell cell = this.Cells[_position[0], _position[1]];
 
+            if (cell != null)
+            {
+                if (cell.Free) { 
+                    cell.Symbol = _player.Symbol;
+                    cell.Position = _position;
+                    cell.Free = false;
+                }
+            } else
+            {
+                this.Cells[_position[0], _position[1]] = new Cell();
+                this.Cells[_position[0], _position[1]].Symbol = _player.Symbol;
+                this.Cells[_position[0], _position[1]].Position = _position;
+                this.Cells[_position[0], _position[1]].Free = false;
+            }
         }
 
         /// <summary>
