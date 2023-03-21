@@ -8,7 +8,7 @@ namespace TicTacToe
 {
     public class Utility
     {
-        public int ReadInt(int min)
+        public static int ReadInt(int min)
         {
             string? _input;
             int _n;
@@ -20,7 +20,7 @@ namespace TicTacToe
             return _n;
         }
 
-        public char ReadSymbol()
+        public static char ReadSymbol()
         {
             string? _input;
             char _chr;
@@ -32,7 +32,7 @@ namespace TicTacToe
             return _chr;
         }
 
-        public void Write(string word)
+        public static void Write(string word)
         {
             Console.Write(word);
         }

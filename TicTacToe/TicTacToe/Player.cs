@@ -43,10 +43,10 @@ namespace TicTacToe
         public int[] GetInput()
         {
             int[] position = new int[2];
-            _helper.Write($"{Name}, x position: ");
-            position[0] = _helper.ReadInt(1);
-            _helper.Write($"{Name}, y position: ");
-            position[1] = _helper.ReadInt(1);
+            Utility.Write($"{Name}, x position: ");
+            position[0] = Utility.ReadInt(1);
+            Utility.Write($"{Name}, y position: ");
+            position[1] = Utility.ReadInt(1);
             return position;
         }
 

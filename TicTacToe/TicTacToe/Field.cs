@@ -59,7 +59,7 @@ namespace TicTacToe
 
                 }
             }
-            _helper.Write($"{sb.ToString()}\n");
+            Utility.Write($"{sb.ToString()}\n");
         }
 
         /// <summary>

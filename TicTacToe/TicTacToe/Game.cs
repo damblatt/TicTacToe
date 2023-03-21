@@ -79,7 +79,6 @@ namespace TicTacToe
 
             CustomizePlayerProfiles();
             SetIndividualPlayerInformation();
-            if (PlayerTwo.Name == PlayerOne.Name) PlayerTwo.Name = "Player 2";
         }
 
         public void CustomizePlayerProfiles()
@@ -88,7 +87,7 @@ namespace TicTacToe
             {
                 // get name
                 {
-                    _helper.Write($"{player.Name}, you can now enter a custom name if you want to: ");
+                    Utility.Write($"{player.Name}, you can now enter a custom name if you want to: ");
                     string? playerName = Console.ReadLine().Trim();
                     if (playerName != null && playerName != "")
                     {
@@ -98,8 +97,8 @@ namespace TicTacToe
 
                 // get symbol
                 {
-                    _helper.Write($"{player.Name}, please enter a symbol: ");
-                    player.Symbol = _helper.ReadSymbol();
+                    Utility.Write($"{player.Name}, please enter a symbol: ");
+                    player.Symbol = Utility.ReadSymbol();
                 }
             }
         }
@@ -131,8 +130,8 @@ namespace TicTacToe
 
         public int GetFieldSize()
         {
-            _helper.Write("Enter the field size: ");
-            return _helper.ReadInt(3);
+            Utility.Write("Enter the field size: ");
+            return Utility.ReadInt(3);
         }
 
         public void CreateField()
