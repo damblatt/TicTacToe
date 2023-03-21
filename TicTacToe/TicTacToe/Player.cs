@@ -21,10 +21,10 @@ namespace TicTacToe
             Name = $"Player {numberOfPlayer}";
             if (numberOfPlayer == 1)
             {
-                Symbol = 'X';
+                Symbol = 'X'; // default
             } else if (numberOfPlayer == 2)
             {
-                Symbol = 'O';
+                Symbol = 'O'; // default
             }
             switch (numberOfPlayer)
             {
@@ -43,13 +43,10 @@ namespace TicTacToe
         public int[] GetInput()
         {
             int[] position = new int[2];
-<<<<<<< HEAD
-            position[0] = _helper.ReadInt(1, $"Player {this.Name}, X: ") - 1;
-            position[1] = _helper.ReadInt(1, $"Player {this.Name}, Y: ") - 1;
-=======
+            _helper.Write($"{Name}, x position: ");
             position[0] = _helper.ReadInt(1);
+            _helper.Write($"{Name}, y position: ");
             position[1] = _helper.ReadInt(1);
->>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
             return position;
         }
 

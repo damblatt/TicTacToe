@@ -9,7 +9,7 @@ namespace TicTacToe
     public class Cell
     {
         public int[] Position { get; set; }
-        public string Symbol { get; set; }
+        public char Symbol { get; set; }
         public bool Free { get; set; } = false;
     }
 }
