@@ -18,7 +18,7 @@
 
 ####  Produktvision
 
-Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictactoe Spielen kann. Was unser Produkt jedoch hervorhebt ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann und und die Grösse des Spielfeldes.
+Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictactoe Spielen kann. Was unser Produkt jedoch hervorhebt ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann.
 
 #### User-Stories
 
@@ -86,7 +86,13 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
    >
    > `Das Spiel kann durch die TicTacToe Regeln gewonnen bzw. verloren werden.`
 
+   <br>
    
+1. > Als Product Owner möchte ich, dass das Projekt Gut dokumentiert wurde und sauber auf GitHub dargestellt ist.
+   >
+   > `Das ganze Developerteam hat das finale Projektresultat kontrolliert und zugestummen es so abzugeben.`
+   
+      
 
 ## Dokumentation
 
@@ -111,16 +117,34 @@ In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund daf
 - Objektorientierte Umsetzung
   - Alle Klassen & Methoden bereitstellen
 - Funktionierendes Spielfeld
-  - Benutzerdefinierte Feldgrösse
   - Spielereingaben
   - Fehlermeldungen bei ungültigen Eingaben
 
 #### Tätigkeit
 
-Den zweiten Sprint starteten wir gemütlich und waren abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht relativ viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
+Den zweiten Sprint starteten wir abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht relativ viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
 
 #### Review & Retrospektive Protokoll
 
 In diesem Sprint haben wir unser Sprintziel erreicht.
 wir haben dieses Mal uns besser ausserhalb von Unterricht organisiert. das einzige Problem was aufgetreten ist, wir hatten Probleme mit Rücksicht auf die anderen GitHub zu arbeiten.
+
+### 21-03-2023 (Sprint 3)
+
+#### Sprintziele
+
+- UI fertigstellen
+
+  - Anzeigen welcher Spieler am Zug ist
+
+  - Gewinner anzeigen
+
+- Logik fertigstellen
+  - Logik um zu Gewinnen implementieren
+  - Undo Funktion implementieren
+
+
+#### Tätigkeit
+
+#### Review & Retrospektive Protokoll
 
