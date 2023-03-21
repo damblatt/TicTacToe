@@ -46,6 +46,10 @@ namespace TicTacToe
                 this._field.Draw();
 
                 int[] position = this._currentPlayer.GetInput();
+
+                position[0] = Math.Clamp(position[0], 0, this.FieldSize - 1);
+                position[1] = Math.Clamp(position[0], 0, this.FieldSize - 1);
+
                 this._field.SetCell(this._currentPlayer, position);
 
                 if (this._currentPlayer == this._player1)
