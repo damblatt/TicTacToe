@@ -79,17 +79,9 @@ namespace TicTacToe
         public void SetCell(Player _player, Coordinate _coordinate)
         {
             Cell cell = Cells[_coordinate.Y, _coordinate.X];
-            if (cell != null && cell.Free){
-                cell.Symbol = _player.Symbol;
-                cell.Position = _coordinate;
-                cell.Free = false;
-            } else
-            {
-                Cells[_coordinate.Y, _coordinate.X] = new Cell();
-                Cells[_coordinate.Y, _coordinate.X].Symbol = _player.Symbol;
-                Cells[_coordinate.Y, _coordinate.X].Position = _coordinate;
-                Cells[_coordinate.Y, _coordinate.X].Free = false;
-            }
+            cell.Symbol = _player.Symbol;
+            cell.Position = _coordinate;
+            cell.Free = false;
         }
 
         /// <summary>

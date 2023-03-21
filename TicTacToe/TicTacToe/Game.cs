@@ -43,22 +43,21 @@ namespace TicTacToe
             Console.Clear();
 
             // Game Loop
-            while (this._state == GameState.RUNNING)
+            while (_state == GameState.RUNNING)
             {
                 _field.PrintField();
+                Coordinate _coordinate;
+                bool _isAvailable;
+                do
+                {
+                    _coordinate = _currentPlayer.GetInput();
+                    _isAvailable = _field.Cells[_coordinate.Y, _coordinate.X].Free;
+                } while (!_isAvailable);
 
-                Coordinate _coordinate = _currentPlayer.GetInput();
-
-                //position[0] = Math.Clamp(position[0], 0, this.FieldSize - 1);
-                //_coordinate.X = Math.Clamp(_coordinate.X, 0, this.FieldSize - 1);
-                //_coordinate.Y = Math.Clamp(_coordinate.X, 0, this.FieldSize - 1);
-                //position[1] = Math.Clamp(position[0], 0, this.FieldSize - 1);
-
-                //this._field.SetCell(this._currentPlayer, position);
                 _field.SetCell(_currentPlayer, _coordinate);
 
-                if (_currentPlayer == this.PlayerOne)
-                    _currentPlayer = this.PlayerTwo;
+                if (_currentPlayer == PlayerOne)
+                    _currentPlayer = PlayerTwo;
                 else 
                     _currentPlayer = PlayerOne;
 
@@ -104,19 +103,19 @@ namespace TicTacToe
             }
         }
 
-        public void SetIndividualPlayerInformation()
+        private void SetIndividualPlayerInformation()
         {
             SetIndividualNames();
             SetIndividualSymbols();
         }
 
-        public void SetIndividualNames()
+        private void SetIndividualNames()
         {
             if (PlayerTwo.Name == PlayerOne.Name && PlayerOne.Name != "Player 2") PlayerTwo.Name = "Player 2";
             else if (PlayerTwo.Name == PlayerOne.Name && PlayerOne.Name == "Player 2") PlayerOne.Name = "Player 1";
         }
 
-        public void SetIndividualSymbols()
+        private void SetIndividualSymbols()
         {
             if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol != 'O') PlayerTwo.Symbol = 'O';
             else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';

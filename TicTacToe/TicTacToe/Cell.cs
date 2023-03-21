@@ -10,6 +10,6 @@ namespace TicTacToe
     {
         public Coordinate Position { get; set; }
         public char Symbol { get; set; } = ' ';
-        public bool Free { get; set; } = false;
+        public bool Free { get; set; } = true;
     }
 }

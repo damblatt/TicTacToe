@@ -42,8 +42,8 @@ namespace TicTacToe
             if (first > 48 && first < 58)
             {
                 // first is digit
-                chr = input[1];
-                num = input[0..];
+                chr = input[^1];
+                num = input[..^1];
             }
             else
             {
