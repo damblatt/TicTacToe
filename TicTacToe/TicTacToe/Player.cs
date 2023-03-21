@@ -9,23 +9,47 @@ namespace TicTacToe
     public class Player
     {
         public string Name { get; set; }
+        public char Symbol { get; set; }
         public int Score { get; set; } = 0;
         public bool HasTurn { get; set; } = false;
-        public string Symbol { get; set; }
         public bool HasWon { get; set; } = false;
 
         private Utility _helper = new Utility();
 
-        public Player(String _name, String _symbol)
-        { 
-            this.Name = _name;
-            this.Symbol = _symbol;
+        public Player(int numberOfPlayer)
+        {
+            Name = $"Player {numberOfPlayer}";
+            if (numberOfPlayer == 1)
+            {
+                Symbol = 'X';
+            } else if (numberOfPlayer == 2)
+            {
+                Symbol = 'O';
+            }
+            switch (numberOfPlayer)
+            {
+                case 1: Symbol = 'X'; break;
+                case 2: Symbol = 'O'; break;
+                default: throw new Exception($"Illegal player number: {numberOfPlayer}");
+            }
         }
+
+        public Player(string _name, char _symbol)
+        {
+            Name = _name;
+            Symbol = _symbol;
+        }
+
         public int[] GetInput()
         {
             int[] position = new int[2];
+<<<<<<< HEAD
             position[0] = _helper.ReadInt(1, $"Player {this.Name}, X: ") - 1;
             position[1] = _helper.ReadInt(1, $"Player {this.Name}, Y: ") - 1;
+=======
+            position[0] = _helper.ReadInt(1);
+            position[1] = _helper.ReadInt(1);
+>>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
             return position;
         }
 

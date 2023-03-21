@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,9 @@ namespace TicTacToe
     {
         public int FieldSize { get; set; }
         private Field _field;
-        private Player _player1;
-        private Player _player2;
+        private List<Player> _listOfPlayers = new List<Player>();
+        private Player _playerOne;
+        private Player _playerTwo;
         private Stack<Field> _history;
         private GameState _state;
         private Utility _helper = new Utility();
@@ -22,16 +24,24 @@ namespace TicTacToe
             RUNNING, OVER
         }
 
+        /// <summary>
+        /// Creating a (new) game creates a field and adds players to the game.
+        /// </summary>
         public Game()
         {
             FieldSize = GetFieldSize();
             CreateField();
+<<<<<<< HEAD
             GetPlayers();
             this._history = new Stack<Field>();
             this._state = GameState.OVER;
 
             Random rnd = new Random();
             this._currentPlayer = rnd.Next(100) < 50 ? _player1 : _player2;
+=======
+            AddPlayers();
+            _history = new Stack<Field>();
+>>>>>>> 7a633ccc2edc2c0c01d0d5e0bf451c62c5b0dc18
         }
 
         public void Start()
@@ -66,31 +76,50 @@ namespace TicTacToe
 
         }
 
-        private void GetPlayers()
+        private void AddPlayers()
         {
-            Console.Write("Player 1 Name: ");
-            string? p1Name = Console.ReadLine();
-            Console.Write("Player 1 Symbol: ");
-            string? p1Symbol = Console.ReadLine();
+            _playerOne = new Player(1);
+            _playerTwo = new Player(2);
+            _listOfPlayers.Add(_playerOne);
+            _listOfPlayers.Add(_playerTwo);
 
-            if (p1Name == null) p1Name = "Player 1";
-            if (p1Symbol == null) p1Symbol = "X";
+            CustomizePlayerProfiles();
+            SetIndividualPlayerInformation();
+            if (_playerTwo.Name == _playerOne.Name) _playerTwo.Name = "Player 2";
+        }
 
-            Console.Write("Player 2 Name: ");
-            string? p2Name = Console.ReadLine();
-            Console.Write("Player 2 Symbol: ");
-            string? p2Symbol = Console.ReadLine();
+        public void CustomizePlayerProfiles()
+        {
+            foreach (Player player in _listOfPlayers)
+            {
+                // get name
+                {
+                    _helper.Write($"{player.Name}, you can now enter a custom name if you want to: ");
+                    string? playerName = Console.ReadLine().Trim();
+                    if (playerName != null && playerName != "")
+                    {
+                        player.Name = playerName;
+                    }
+                }
 
-            if (p2Name == null) p2Name = "Player 2";
-            if (p2Symbol == null) p2Symbol = "O";
+                // get symbol
+                {
+                    _helper.Write($"{player.Name}, please enter a symbol: ");
+                    player.Symbol = _helper.ReadSymbol();
+                }
+            }
+        }
 
-            this._player1 = new Player(p1Name, p1Symbol);
-            this._player2 = new Player(p2Name, p2Symbol);
+        public void SetIndividualPlayerInformation()
+        {
+            if (_playerTwo.Name == _playerOne.Name && _playerOne.Name != "Player 2") _playerTwo.Name = "Player 2";
+            else if (_playerTwo.Name == _playerOne.Name && _playerOne.Name == "Player 2") _playerOne.Name = "Player 1";
         }
 
         public int GetFieldSize()
         {
-            return _helper.ReadInt(3, "Game field size: ");
+            _helper.Write("Enter the field size: ");
+            return _helper.ReadInt(3);
         }
 
         public void CreateField()
