@@ -20,29 +20,31 @@ namespace TicTacToe
 
         enum GameState
         {
-            RUNNING, OVER
+            IDLE, RUNNING, OVER
         }
 
         /// <summary>
-        /// Creating a (new) game creates a field and adds players to the game.
+        /// Creating a (new) game creates a field and adds the players to the game.
         /// </summary>
-        public Game()
+        /// <param name="playerOne">Player one</param>
+        /// <param name="playerTwo">Player two</param>
+        public Game(Player playerOne, Player playerTwo)
         {
             CreateField();
-            AddPlayers();
+            AddPlayers(playerOne, playerTwo);
             _history = new Stack<Field>();
-            _state = GameState.OVER;
+            _state = GameState.IDLE;
 
             SetCurrentPlayer();
         }
 
         public void Start()
         {
-            this._state = GameState.RUNNING;
-
+            _state = GameState.RUNNING;
+            
             Console.Clear();
+            SetCurrentPlayer();
 
-            // Game Loop
             while (_state == GameState.RUNNING)
             {
                 _field.PrintField();
@@ -70,40 +72,26 @@ namespace TicTacToe
 
         }
 
-        private void AddPlayers()
+        private void AddPlayers(Player _playerOne, Player _playerTwo)
         {
-            PlayerOne = new Player(1);
-            PlayerTwo = new Player(2);
+            PlayerOne = _playerOne;
+            PlayerTwo = _playerTwo;
             _listOfPlayers.Add(PlayerOne);
             _listOfPlayers.Add(PlayerTwo);
-
-            CustomizePlayerProfiles();
-            SetIndividualPlayerInformation();
         }
 
-        public void CustomizePlayerProfiles()
+        private void AddPlayers(List<Player> _players)
         {
-            foreach (Player player in _listOfPlayers)
+            PlayerOne = _players[0];
+            PlayerTwo = _players[1];
+            foreach (Player _player in _players)
             {
-                // get name
-                {
-                    Utility.Write($"{player.Name}, you can now enter a custom name if you want to: ");
-                    string? playerName = Console.ReadLine().Trim();
-                    if (playerName != null && playerName != "")
-                    {
-                        player.Name = playerName;
-                    }
-                }
-
-                // get symbol
-                {
-                    Utility.Write($"{player.Name}, please enter a symbol: ");
-                    player.Symbol = Utility.ReadSymbol();
-                }
+                _listOfPlayers.Add(_player);
+                _player.AddPlayerToGame(this);
             }
         }
 
-        private void SetIndividualPlayerInformation()
+        public void SetIndividualPlayerInformation()
         {
             SetIndividualNames();
             SetIndividualSymbols();

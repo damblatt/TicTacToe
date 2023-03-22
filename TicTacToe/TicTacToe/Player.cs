@@ -15,30 +15,15 @@ namespace TicTacToe
         public bool HasWon { get; set; } = false;
         public Game Game{ get; set; }
 
-        private Utility _helper = new Utility();
-
-        public Player(int numberOfPlayer)
-        {
-            Name = $"Player {numberOfPlayer}";
-            if (numberOfPlayer == 1)
-            {
-                Symbol = 'X'; // default
-            } else if (numberOfPlayer == 2)
-            {
-                Symbol = 'O'; // default
-            }
-            switch (numberOfPlayer)
-            {
-                case 1: Symbol = 'X'; break;
-                case 2: Symbol = 'O'; break;
-                default: throw new Exception($"Illegal player number: {numberOfPlayer}");
-            }
-        }
-
         public Player(string _name, char _symbol)
         {
             Name = _name;
             Symbol = _symbol;
+        }
+
+        public void AddPlayerToGame(Game _game)
+        {
+            Game = _game;
         }
 
         public Coordinate GetInput()
@@ -53,6 +38,27 @@ namespace TicTacToe
                 (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(input, 3);
             } while (!_isValid);
             return _coordinate;
+        }
+
+        public void CustomizePlayerProfiles()
+        {
+            // name
+            {
+                Utility.Write($"{Name}, you can now enter a custom name if you want to: ");
+                string? _newPlayerName = Console.ReadLine().Trim();
+                if (_newPlayerName != null && _newPlayerName != "")
+                {
+                    Name = _newPlayerName;
+                }
+            }
+
+            // symbol
+            {
+                Utility.Write($"{Name}, please enter a symbol: ");
+                Symbol = Utility.ReadSymbol();
+            }
+
+            Game.SetIndividualPlayerInformation();
         }
 
         public void AddScore(int _score)
