@@ -8,6 +8,11 @@ namespace TicTacToe
 {
     public class Utility
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="min"></param>
+        /// <returns></returns>
         public static int ReadInt(int min)
         {
             string? _input;
@@ -20,6 +25,10 @@ namespace TicTacToe
             return _n;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static char ReadSymbol()
         {
             string? _input;
@@ -32,6 +41,10 @@ namespace TicTacToe
             return _chr;
         }
 
+        /// <summary>
+        /// prints the given word
+        /// </summary>
+        /// <param name="word"></param>
         public static void Write(string word)
         {
             Console.Write(word);

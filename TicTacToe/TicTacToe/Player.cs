@@ -28,19 +28,21 @@ namespace TicTacToe
 
         public Coordinate GetInput()
         {
-            bool _isValid = false;
-            string input;
+            bool _isValid;
+            string _input;
             Coordinate _coordinate;
-            int[] position = new int[2];
-            Utility.Write($"{Name}, enter field: ");
+            Utility.Write($"{Name}, enter field or type 'back' to undo the last move: ");
             do
             {
-                input = Console.ReadLine();
-                (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(input, 3);
+                _input = Console.ReadLine();
+                (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(_input);
             } while (!_isValid);
             return _coordinate;
         }
 
+        /// <summary>
+        /// customizes the players name and symbol. if no name is entered, the name stays the same
+        /// </summary>
         public void CustomizePlayerProfiles()
         {
             // name

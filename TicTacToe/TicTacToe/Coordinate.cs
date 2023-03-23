@@ -19,55 +19,45 @@ namespace TicTacToe
             X = x;
         }
 
-        public static (bool, Coordinate?) TryCreateCoordinate(string input, int gridSize)
+        /// <summary>
+        /// processes the input and returns a created coordinate if the input is valid. else return null
+        /// </summary>
+        /// <param name="_input"></param>
+        /// <returns>coordinate or null and state of function (successful or not)</returns>
+        public static (bool, Coordinate?) TryCreateCoordinate(string _input)
         {
-            input = input.Trim().ToLower(); // Trim() cuts white-space interactors off
-            if (input.Length < 2 || input.Length > 3)
-            {
-                Console.Write("This field does not exist. Enter a valid coordinate: ");
-                return (false, null);
-            }
+            _input = _input.Trim().ToLower();
+            bool _isInputValid = _regex.Match(_input).Success;
 
-            var isMatch = _regex.Match(input);
-            if (!isMatch.Success)
+            if (_isInputValid)
             {
-                Console.Write("This field does not exist. Enter a valid coordinate: ");
-                return (false, null);
-            }
+                int _firstCharacterAsInt = (int)_input[0];
+                char _char;
+                int _number;
 
-            // detect wether the input starts with an integer or with a string
-            var first = (int)input[0];
-            char chr;
-            string num;
-            if (first > 48 && first < 58)
-            {
                 // first is digit
-                chr = input[^1];
-                num = input[..^1];
-            }
-            else
-            {
+                if (_firstCharacterAsInt > 48 && _firstCharacterAsInt < 58)
+                {
+                    _char = _input[^1];
+                    _number = int.Parse(_input[..^1]);
+                }
                 // first is chr
-                chr = input[0];
-                num = input[1..];
-            }
+                else
+                {
+                    _char = _input[0];
+                    _number = int.Parse(_input[1..]);
+                }
 
-            int y = int.Parse(num) - 1;
-            int x = chr - 'a';
-            if (y >= gridSize || y < 0)
-            {
-                Console.Write("This field does not exist. Enter a valid coordinate: ");
-                return (false, null);
-            }
-            if (x >= gridSize || x < 0)
-            {
-                Console.Write("This field does not exist. Enter a valid coordinate: ");
-                return (false, null);
+                // create coordinate with the processed input information
+                int y = _number - 1;
+                int x = _char - 'a';
+                Coordinate coordinate = new Coordinate(y, x);
+                return (true, coordinate);
             }
             else
             {
-                var coordinate = new Coordinate(y, x);
-                return (true, coordinate);
+                Utility.Write("This field does not exist. Enter a valid coordinate: ");
+                return (false, null);
             }
         }
     }

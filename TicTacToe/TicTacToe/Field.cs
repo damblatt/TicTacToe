@@ -14,6 +14,9 @@ namespace TicTacToe
             FillFieldWithCells();
         }
 
+        /// <summary>
+        /// fills the Cell array with cells
+        /// </summary>
         public void FillFieldWithCells()
         {
             for (int y = 0; y < Size; y++)
@@ -25,6 +28,9 @@ namespace TicTacToe
             }
         }
 
+        /// <summary>
+        /// prints the current field
+        /// </summary>
         public void PrintField()
         {
             StringBuilder sb = new StringBuilder();
@@ -72,7 +78,7 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Sets a cell to the provided player's desired position.
+        /// sets a cell to the provided player's desired position.
         /// </summary>
         /// <param name="_player">The player</param>
         /// <param name="_position">The cell position</param>
@@ -85,7 +91,7 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Checks if there is any winner in the game.
+        /// checks if there is any winner in the game.
         /// </summary>
         public void CheckState()
         {

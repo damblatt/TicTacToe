@@ -11,7 +11,6 @@ namespace TicTacToe
     {
         public static int FieldSize { get; set; } = 3;
         private Field _field;
-        private List<Player> _listOfPlayers = new List<Player>();
         public Player PlayerOne;
         public Player PlayerTwo;
         private Player _currentPlayer;
@@ -24,29 +23,33 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Creating a (new) game creates a field and adds the players to the game.
+        /// creates a field, adds the players to the game and randomly sets the current player
         /// </summary>
         /// <param name="playerOne">Player one</param>
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            CreateField();
-            AddPlayers(playerOne, playerTwo);
             _history = new Stack<Field>();
             _state = GameState.IDLE;
 
+            CreateField();
+            AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Start()
         {
             _state = GameState.RUNNING;
             
-            Console.Clear();
             SetCurrentPlayer();
 
             while (_state == GameState.RUNNING)
             {
+                Console.Clear();
+
                 _field.PrintField();
                 Coordinate _coordinate;
                 bool _isAvailable;
@@ -62,11 +65,12 @@ namespace TicTacToe
                     _currentPlayer = PlayerTwo;
                 else 
                     _currentPlayer = PlayerOne;
-
-                Console.Clear();
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Stop()
         {
 
@@ -75,22 +79,15 @@ namespace TicTacToe
         private void AddPlayers(Player _playerOne, Player _playerTwo)
         {
             PlayerOne = _playerOne;
+            PlayerOne.AddPlayerToGame(this);
+
             PlayerTwo = _playerTwo;
-            _listOfPlayers.Add(PlayerOne);
-            _listOfPlayers.Add(PlayerTwo);
+            PlayerTwo.AddPlayerToGame(this);
         }
 
-        private void AddPlayers(List<Player> _players)
-        {
-            PlayerOne = _players[0];
-            PlayerTwo = _players[1];
-            foreach (Player _player in _players)
-            {
-                _listOfPlayers.Add(_player);
-                _player.AddPlayerToGame(this);
-            }
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void SetIndividualPlayerInformation()
         {
             SetIndividualNames();
