@@ -29,12 +29,13 @@ namespace TicTacToe
         public Coordinate GetInput()
         {
             bool _isValid = false;
+            string input;
             Coordinate _coordinate;
             int[] position = new int[2];
             Utility.Write($"{Name}, enter field: ");
-            string input = Console.ReadLine();
             do
             {
+                input = Console.ReadLine();
                 (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(input, 3);
             } while (!_isValid);
             return _coordinate;
