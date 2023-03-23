@@ -88,7 +88,7 @@ namespace TicTacToe
         /// <summary>
         /// 
         /// </summary>
-        public void SetIndividualPlayerInformation()
+        public void SetIndividualPlayerInformation() // maybe migrate to player class?
         {
             SetIndividualNames();
             SetIndividualSymbols();
