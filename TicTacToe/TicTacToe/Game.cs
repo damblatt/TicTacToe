@@ -56,7 +56,7 @@ namespace TicTacToe
                 do
                 {
                     _coordinate = _currentPlayer.GetInput();
-                    _isAvailable = _field.Cells[_coordinate.Y, _coordinate.X].Free;
+                    _isAvailable = _field.Cells[_coordinate.Row, _coordinate.Column].Free;
                 } while (!_isAvailable);
 
                 _field.SetCell(_currentPlayer, _coordinate);

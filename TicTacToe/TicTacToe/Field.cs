@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Data.Common;
+using System.Text;
 
 namespace TicTacToe
 {
@@ -17,14 +18,29 @@ namespace TicTacToe
         /// <summary>
         /// fills the Cell array with cells
         /// </summary>
-        public void FillFieldWithCells()
+        private void FillFieldWithCells()
         {
-            for (int y = 0; y < Size; y++)
+            for (int _row = 0; _row < Size; _row++)
             {
-                for(int x = 0; x < Size; x++)
+                for(int _column = 0; _column < Size; _column++)
                 {
-                    Cells[x, y] = new Cell();
+                    Cells[_row, _column] = new Cell(_row, _column);
                 }
+            }
+
+            SetNeighboringCells();
+        }
+
+        private void SetNeighboringCells()
+        {
+            foreach (Cell cell in Cells)
+            {
+                var _top = cell.Row > 0 ? Cells[cell.Row - 1, cell.Column] : null;
+                var _right = cell.Column + 1 < Size ? Cells[cell.Row, cell.Column + 1] : null;
+                var _bottom = cell.Row + 1 < Size ? Cells[cell.Row + 1, cell.Column] : null;
+                var _left = cell.Column > 0 ? Cells[cell.Row, cell.Column - 1] : null;
+
+                Cells[cell.Row, cell.Column].SetNeighboringCells(_top, _right, _bottom, _left);
             }
         }
 
@@ -33,48 +49,46 @@ namespace TicTacToe
         /// </summary>
         public void PrintField()
         {
-            StringBuilder sb = new StringBuilder();
-            string _emptyField = " ";
-            char[] _alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            StringBuilder _stringBuilder = new StringBuilder();
+            char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
-            sb.Append($"{Environment.NewLine}     ");
+            _stringBuilder.Append($"{Environment.NewLine}     ");
 
             // column header (letters)
             {
-                for (int i = 0; i < Cells.GetLength(1); i++)
+                for (int _column = 0; _column < Size; _column++)
                 {
-                    sb.Append("  " + _alpha[i] + " ");
+                    _stringBuilder.Append("  " + _alphabet[_column] + " ");
                 }
-
-                sb.Append($"{Environment.NewLine}     -");
-                for (int y = 0; y < Cells.GetLength(1); y++)
-                {
-                    sb.Append("----");
-                }
+                AppendHorizontalLine(_stringBuilder);
             }
 
             // rows (numbers and fields)
             {
-                sb.Append(Environment.NewLine);
-                for (int x = 0; x < Cells.GetLength(0); x++)
+                _stringBuilder.Append(Environment.NewLine);
+                for (int _row = 0; _row < Size; _row++)
                 {
-                    sb.Append("  " + (x + 1).ToString("00") + " | ");
+                    _stringBuilder.Append("  " + (_row + 1).ToString("00") + " | ");
 
-                    for (int y = 0; y < Cells.GetLength(1); y++)
+                    for (int _column = 0; _column < Size; _column++)
                     {
-                        sb.Append($"{Cells[x, y].Symbol} | ");
+                        _stringBuilder.Append($"{Cells[_row, _column].Symbol} | ");
                     }
-                    sb.Append(Environment.NewLine);
-                    sb.Append("     -");
-                    for (int y = 0; y < Cells.GetLength(1); y++)
-                    {
-                        sb.Append("----");
-                    }
-                    sb.Append(Environment.NewLine);
-
+                    AppendHorizontalLine(_stringBuilder);
+                    _stringBuilder.Append(Environment.NewLine);
                 }
             }
-            Utility.Write($"{sb.ToString()}\n");
+            Utility.Write($"{_stringBuilder}\n");
+        }
+
+        private StringBuilder AppendHorizontalLine(StringBuilder _stringBuilder)
+        {
+            _stringBuilder.Append($"{Environment.NewLine}     -");
+            for (int _column = 0; _column < Size; _column++)
+            {
+                _stringBuilder.Append("----");
+            }
+            return _stringBuilder;
         }
 
         /// <summary>
@@ -84,9 +98,9 @@ namespace TicTacToe
         /// <param name="_position">The cell position</param>
         public void SetCell(Player _player, Coordinate _coordinate)
         {
-            Cell cell = Cells[_coordinate.Y, _coordinate.X];
+            Cell cell = Cells[_coordinate.Row, _coordinate.Column];
             cell.Symbol = _player.Symbol;
-            cell.Position = _coordinate;
+            cell.Coordinate = _coordinate;
             cell.Free = false;
         }
 
@@ -94,6 +108,21 @@ namespace TicTacToe
         /// checks if there is any winner in the game.
         /// </summary>
         public void CheckState()
+        {
+
+        }
+
+        public void CheckHorizontalLine()
+        {
+
+        }
+
+        public void CheckVerticalLine()
+        {
+
+        }
+
+        public void CheckDiagonalLine()
         {
 
         }
