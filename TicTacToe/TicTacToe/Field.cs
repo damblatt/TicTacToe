@@ -16,38 +16,9 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// fills the Cell array with cells
-        /// </summary>
-        private void FillFieldWithCells()
-        {
-            for (int _row = 0; _row < Size; _row++)
-            {
-                for(int _column = 0; _column < Size; _column++)
-                {
-                    Cells[_row, _column] = new Cell(_row, _column);
-                }
-            }
-
-            SetNeighboringCells();
-        }
-
-        private void SetNeighboringCells()
-        {
-            foreach (Cell cell in Cells)
-            {
-                var _top = cell.Row > 0 ? Cells[cell.Row - 1, cell.Column] : null;
-                var _right = cell.Column + 1 < Size ? Cells[cell.Row, cell.Column + 1] : null;
-                var _bottom = cell.Row + 1 < Size ? Cells[cell.Row + 1, cell.Column] : null;
-                var _left = cell.Column > 0 ? Cells[cell.Row, cell.Column - 1] : null;
-
-                Cells[cell.Row, cell.Column].SetNeighboringCells(_top, _right, _bottom, _left);
-            }
-        }
-
-        /// <summary>
         /// prints the current field
         /// </summary>
-        public void PrintField()
+        public void Print()
         {
             StringBuilder _stringBuilder = new StringBuilder();
             char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -81,6 +52,54 @@ namespace TicTacToe
             Utility.Write($"{_stringBuilder}\n");
         }
 
+        /// <summary>
+        /// sets a cell to the provided player's desired position.
+        /// </summary>
+        /// <param name="_player">The player</param>
+        /// <param name="_position">The cell position</param>
+        public void OccupyCell(Player _player, Coordinate _coordinate)
+        {
+            Cell cell = Cells[_coordinate.Row, _coordinate.Column];
+            cell.Symbol = _player.Symbol;
+            cell.Free = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_coordinate"></param>
+        /// <returns></returns>
+        public Cell GetCellByCoordinate(Coordinate _coordinate)
+        {
+            return Cells[_coordinate.Row, _coordinate.Column];
+        }
+
+        private void FillFieldWithCells()
+        {
+            for (int _row = 0; _row < Size; _row++)
+            {
+                for(int _column = 0; _column < Size; _column++)
+                {
+                    Cells[_row, _column] = new Cell(_row, _column);
+                }
+            }
+
+            SetNeighboringCells();
+        }
+
+        private void SetNeighboringCells()
+        {
+            foreach (Cell cell in Cells)
+            {
+                var _top = cell.Row > 0 ? Cells[cell.Row - 1, cell.Column] : null;
+                var _right = cell.Column + 1 < Size ? Cells[cell.Row, cell.Column + 1] : null;
+                var _bottom = cell.Row + 1 < Size ? Cells[cell.Row + 1, cell.Column] : null;
+                var _left = cell.Column > 0 ? Cells[cell.Row, cell.Column - 1] : null;
+
+                Cells[cell.Row, cell.Column].SetNeighboringCells(_top, _right, _bottom, _left);
+            }
+        }
+
         private StringBuilder AppendHorizontalLine(StringBuilder _stringBuilder)
         {
             _stringBuilder.Append($"{Environment.NewLine}     -");
@@ -91,40 +110,25 @@ namespace TicTacToe
             return _stringBuilder;
         }
 
-        /// <summary>
-        /// sets a cell to the provided player's desired position.
-        /// </summary>
-        /// <param name="_player">The player</param>
-        /// <param name="_position">The cell position</param>
-        public void SetCell(Player _player, Coordinate _coordinate)
-        {
-            Cell cell = Cells[_coordinate.Row, _coordinate.Column];
-            cell.Symbol = _player.Symbol;
-            cell.Coordinate = _coordinate;
-            cell.Free = false;
-        }
+        // old code
+        //public void CheckState()
+        //{
 
-        /// <summary>
-        /// checks if there is any winner in the game.
-        /// </summary>
-        public void CheckState()
-        {
+        //}
 
-        }
+        //public void CheckHorizontalLine()
+        //{
 
-        public void CheckHorizontalLine()
-        {
+        //}
 
-        }
+        //public void CheckVerticalLine()
+        //{
 
-        public void CheckVerticalLine()
-        {
+        //}
 
-        }
+        //public void CheckDiagonalLine()
+        //{
 
-        public void CheckDiagonalLine()
-        {
-
-        }
+        //}
     }
 }

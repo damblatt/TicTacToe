@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     public class Game
     {
         public static int FieldSize { get; set; } = 3;
-        private Field _field;
+        public Field Field;
         public Player PlayerOne;
         public Player PlayerTwo;
-        private Player _currentPlayer;
+        private Player? _currentPlayer = null;
         private GameState _state;
         private Stack<Field> _history;
 
@@ -32,7 +25,7 @@ namespace TicTacToe
             _history = new Stack<Field>();
             _state = GameState.IDLE;
 
-            CreateField();
+            AddField();
             AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
         }
@@ -43,28 +36,28 @@ namespace TicTacToe
         public void Start()
         {
             _state = GameState.RUNNING;
-            
+            WinChecker.Field = Field;
+
             SetCurrentPlayer();
 
             while (_state == GameState.RUNNING)
             {
-                Console.Clear();
+                PrintField();
 
-                _field.PrintField();
-                Coordinate _coordinate;
-                bool _isAvailable;
-                do
+                // turn
+                Coordinate _coordinate = GetCoordinate();
+                OccupyCell(_coordinate);
+
+                // win check
+                if (WinChecker.IsGameWon())
                 {
-                    _coordinate = _currentPlayer.GetInput();
-                    _isAvailable = _field.Cells[_coordinate.Row, _coordinate.Column].Free;
-                } while (!_isAvailable);
+                    PrintField();
+                    Utility.Write("Win");
+                    _state = GameState.OVER;
+                };
 
-                _field.SetCell(_currentPlayer, _coordinate);
-
-                if (_currentPlayer == PlayerOne)
-                    _currentPlayer = PlayerTwo;
-                else 
-                    _currentPlayer = PlayerOne;
+                // player rotation
+                SetCurrentPlayer();
             }
         }
 
@@ -76,6 +69,31 @@ namespace TicTacToe
 
         }
 
+        private void PrintField()
+        {
+            Console.Clear();
+            Field.Print();
+        }
+
+        private Coordinate GetCoordinate()
+        {
+            Coordinate _coordinate;
+            bool _isAvailable;
+
+            do
+            {
+                _coordinate = _currentPlayer.GetInput();
+                _isAvailable = Field.Cells[_coordinate.Row, _coordinate.Column].Free;
+            } while (!_isAvailable);
+
+            return _coordinate;
+        }
+
+        private void OccupyCell(Coordinate _coordinate)
+        {
+            Field.OccupyCell(_currentPlayer, _coordinate);
+        }
+
         private void AddPlayers(Player _playerOne, Player _playerTwo)
         {
             PlayerOne = _playerOne;
@@ -85,9 +103,6 @@ namespace TicTacToe
             PlayerTwo.AddPlayerToGame(this);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void SetIndividualPlayerInformation() // maybe migrate to player class?
         {
             SetIndividualNames();
@@ -106,22 +121,26 @@ namespace TicTacToe
             else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';
         }
 
-        public void SetCurrentPlayer()
+        private void SetCurrentPlayer()
         {
-            Random rnd = new Random();
-            _currentPlayer = rnd.Next(100) < 50 ? PlayerOne : PlayerTwo;
-            _history = new Stack<Field>();
+            if (_currentPlayer == PlayerOne)
+            {
+                _currentPlayer = PlayerTwo;
+            } 
+            else if (_currentPlayer == PlayerTwo) {
+                _currentPlayer = PlayerOne;
+            }
+            else
+            {
+                Random rnd = new Random();
+                _currentPlayer = rnd.Next(100) < 50 ? PlayerOne : PlayerTwo;
+                _history = new Stack<Field>();
+            }
         }
 
-        public int GetFieldSize()
+        private void AddField()
         {
-            Utility.Write("Enter the field size: ");
-            return Utility.ReadInt(3);
-        }
-
-        public void CreateField()
-        {
-            _field = new Field(FieldSize);
+            Field = new Field(FieldSize);
         }
     }
 }
