@@ -23,7 +23,7 @@ namespace TicTacToe
             StringBuilder _stringBuilder = new StringBuilder();
             char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
-            _stringBuilder.Append($"{Environment.NewLine}     ");
+            _stringBuilder.Append($"{Environment.NewLine}    ");
 
             // column header (letters)
             {
@@ -39,7 +39,7 @@ namespace TicTacToe
                 _stringBuilder.Append(Environment.NewLine);
                 for (int _row = 0; _row < Size; _row++)
                 {
-                    _stringBuilder.Append("  " + (_row + 1).ToString("00") + " | ");
+                    _stringBuilder.Append("  " + (_row + 1).ToString("0") + " | ");
 
                     for (int _column = 0; _column < Size; _column++)
                     {
@@ -87,7 +87,7 @@ namespace TicTacToe
 
         private StringBuilder AppendHorizontalLine(StringBuilder _stringBuilder)
         {
-            _stringBuilder.Append($"{Environment.NewLine}     -");
+            _stringBuilder.Append($"{Environment.NewLine}    -");
             for (int _column = 0; _column < Size; _column++)
             {
                 _stringBuilder.Append("----");
