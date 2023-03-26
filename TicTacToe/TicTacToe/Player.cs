@@ -26,7 +26,7 @@ namespace TicTacToe
             Game = _game;
         }
 
-        public Coordinate GetInput()
+        public (Game.InputType, object) GetInputAndType()
         {
             bool _isValid;
             string _input;
@@ -34,10 +34,17 @@ namespace TicTacToe
             Utility.Write($"{Name}, enter field or type 'back' to undo the last move: ");
             do
             {
-                _input = Console.ReadLine();
-                (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(_input);
+                _input = Console.ReadLine().Trim().ToLower();
+                if (_input == "back")
+                {
+                    return (Game.InputType.Back, "back");
+                }
+                else
+                {
+                    (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(_input);
+                }
             } while (!_isValid);
-            return _coordinate;
+            return (Game.InputType.Coordinate, _coordinate);
         }
 
         /// <summary>

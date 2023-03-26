@@ -1,18 +1,30 @@
-﻿namespace TicTacToe
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TicTacToe
 {
     public class Game
     {
         public static int FieldSize { get; set; } = 3;
-        public Field Field;
-        public Player PlayerOne;
-        public Player PlayerTwo;
-        private Player? _currentPlayer = null;
-        private GameState _state;
-        private Stack<Field> _history;
+        public Field Field { get; set; }
+        public Player PlayerOne { get; set; }
+        public Player PlayerTwo { get; set; }
+        private Player _currentPlayer;
+        private StateOfTheGame _state;
+        private Stack<(Field, Player)> _history;
 
-        enum GameState
+        enum StateOfTheGame
         {
             IDLE, RUNNING, OVER
+        }
+
+        public enum InputType
+        {
+            Coordinate, Back, Unknown
         }
 
         /// <summary>
@@ -22,12 +34,14 @@
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            _history = new Stack<Field>();
-            _state = GameState.IDLE;
-
-            AddField();
+            CreateField();
             AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
+            _history = new Stack<(Field, Player)>();
+            _state = StateOfTheGame.IDLE;
+
+            Field _field = (Field)Field.Clone();
+            _history.Push((_field, _currentPlayer));
         }
 
         /// <summary>
@@ -35,28 +49,18 @@
         /// </summary>
         public void Start()
         {
-            _state = GameState.RUNNING;
-            WinChecker.Field = Field;
+            _state = StateOfTheGame.RUNNING;
 
-            SetCurrentPlayer();
+            Random _random = new Random();
+            _currentPlayer = _random.Next(100) < 50 ? PlayerOne : PlayerTwo;
 
-            while (_state == GameState.RUNNING)
+            while (_state == StateOfTheGame.RUNNING)
             {
                 PrintField();
 
-                // turn
-                Coordinate _coordinate = GetCoordinate();
-                OccupyCell(_coordinate);
+                (InputType _typeOfInput, object _input) = GetInputAndType();
+                ProcessInput(_typeOfInput, _input);
 
-                // win check
-                if (WinChecker.IsGameWon())
-                {
-                    PrintField();
-                    Utility.Write("Win");
-                    _state = GameState.OVER;
-                };
-
-                // player rotation
                 SetCurrentPlayer();
             }
         }
@@ -69,29 +73,102 @@
 
         }
 
+        public int GetFieldSize()
+        {
+            Utility.Write("Enter the field size: ");
+            return Utility.ReadInt(3);
+        }
+
+        public void CreateField()
+        {
+            Field = new Field(FieldSize);
+        }
+
+        public void SetIndividualPlayerInformation() // maybe migrate to player class?
+        {
+            SetIndividualNames();
+            SetIndividualSymbols();
+        }
+
+        private void SetCurrentPlayer()
+        {
+            // first call
+            if (_currentPlayer == null)
+            {
+                Random _random = new Random();
+                _currentPlayer = _random.Next(100) < 50 ? PlayerOne : PlayerTwo;
+            }
+
+            if (_currentPlayer == PlayerOne)
+            {
+                _currentPlayer = PlayerTwo;
+            }
+            else
+            {
+                _currentPlayer = PlayerOne;
+            }
+        }
+
         private void PrintField()
         {
             Console.Clear();
             Field.Print();
         }
 
-        private Coordinate GetCoordinate()
+        private (InputType, object) GetInputAndType()
         {
+            object _input;
+            bool _isValid;
+            InputType _typeOfInput;
             Coordinate _coordinate;
-            bool _isAvailable;
 
             do
             {
-                _coordinate = _currentPlayer.GetInput();
-                _isAvailable = Field.Cells[_coordinate.Row, _coordinate.Column].Free;
-            } while (!_isAvailable);
+                (_typeOfInput, _input) = _currentPlayer.GetInputAndType();
+                if (_typeOfInput == InputType.Coordinate)
+                {
+                    _coordinate = (Coordinate)_input;
+                    _isValid = Field.Cells[_coordinate.Row, _coordinate.Column].Free;
+                } 
+                else if (_typeOfInput == InputType.Back)
+                {
+                    _isValid = (_history.Count > 1);
+                    if (!_isValid)
+                    {
+                        Utility.Write("No moves have been made yet.\n");
+                    }
+                } 
+                else
+                {
+                    _isValid = false;
+                }
+            } while (!_isValid);
+            return (_typeOfInput, _input);
+        }
 
-            return _coordinate;
+        private void ProcessInput(InputType _typeOfInput, object _input)
+        {
+            if (_typeOfInput == InputType.Coordinate)
+            {
+                OccupyCell((Coordinate)_input);
+            }
+            else if (_typeOfInput == InputType.Back)
+            {
+                Back();
+            }
         }
 
         private void OccupyCell(Coordinate _coordinate)
         {
             Field.OccupyCell(_currentPlayer, _coordinate);
+            Field _field = (Field)Field.Clone();
+            _history.Push((_field, _currentPlayer));
+        }
+
+        private void Back()
+        {
+            _history.Pop();
+            (Field, _currentPlayer) = _history.Peek();
         }
 
         private void AddPlayers(Player _playerOne, Player _playerTwo)
@@ -101,12 +178,6 @@
 
             PlayerTwo = _playerTwo;
             PlayerTwo.AddPlayerToGame(this);
-        }
-
-        public void SetIndividualPlayerInformation() // maybe migrate to player class?
-        {
-            SetIndividualNames();
-            SetIndividualSymbols();
         }
 
         private void SetIndividualNames()
@@ -119,28 +190,6 @@
         {
             if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol != 'O') PlayerTwo.Symbol = 'O';
             else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';
-        }
-
-        private void SetCurrentPlayer()
-        {
-            if (_currentPlayer == PlayerOne)
-            {
-                _currentPlayer = PlayerTwo;
-            } 
-            else if (_currentPlayer == PlayerTwo) {
-                _currentPlayer = PlayerOne;
-            }
-            else
-            {
-                Random rnd = new Random();
-                _currentPlayer = rnd.Next(100) < 50 ? PlayerOne : PlayerTwo;
-                _history = new Stack<Field>();
-            }
-        }
-
-        private void AddField()
-        {
-            Field = new Field(FieldSize);
         }
     }
 }

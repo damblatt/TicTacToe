@@ -3,7 +3,7 @@ using System.Text;
 
 namespace TicTacToe
 {
-    public class Field
+    public class Field : ICloneable
     {
         public int Size { get; set; }
         public Cell[,] Cells { get; set; }
@@ -83,21 +83,6 @@ namespace TicTacToe
                     Cells[_row, _column] = new Cell(_row, _column);
                 }
             }
-
-            SetNeighboringCells();
-        }
-
-        private void SetNeighboringCells()
-        {
-            foreach (Cell cell in Cells)
-            {
-                var _top = cell.Row > 0 ? Cells[cell.Row - 1, cell.Column] : null;
-                var _right = cell.Column + 1 < Size ? Cells[cell.Row, cell.Column + 1] : null;
-                var _bottom = cell.Row + 1 < Size ? Cells[cell.Row + 1, cell.Column] : null;
-                var _left = cell.Column > 0 ? Cells[cell.Row, cell.Column - 1] : null;
-
-                Cells[cell.Row, cell.Column].SetNeighboringCells(_top, _right, _bottom, _left);
-            }
         }
 
         private StringBuilder AppendHorizontalLine(StringBuilder _stringBuilder)
@@ -110,25 +95,17 @@ namespace TicTacToe
             return _stringBuilder;
         }
 
-        // old code
-        //public void CheckState()
-        //{
-
-        //}
-
-        //public void CheckHorizontalLine()
-        //{
-
-        //}
-
-        //public void CheckVerticalLine()
-        //{
-
-        //}
-
-        //public void CheckDiagonalLine()
-        //{
-
-        //}
+        public object Clone()
+        {
+            Field newField = new Field(Size);
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    newField.Cells[i, j] = (Cell)Cells[i, j].Clone();
+                }
+            }
+            return newField;
+        }
     }
 }
