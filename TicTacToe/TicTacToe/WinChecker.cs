@@ -10,9 +10,11 @@ namespace TicTacToe
     {
         public static int Depth { get; set; } = 0;
         public static bool IsWon { get; set; } = false;
+        public static Game Game { get; set; }
 
-        public static bool IsGameWon()
+        public static bool IsGameWon(Game _game)
         {
+            Game = _game;
             if (CheckHorizontalLine()) return IsWon;
             if (CheckVerticalLine()) return IsWon;
             CheckDiagonalLine();

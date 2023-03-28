@@ -10,7 +10,7 @@ namespace TicTacToe
     public class Game
     {
         public static int FieldSize { get; set; } = 3;
-        public static Field Field { get; set; }
+        public Field Field { get; set; }
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
 
@@ -57,6 +57,7 @@ namespace TicTacToe
 
             Random _random = new Random();
             _currentPlayer = _random.Next(100) < 50 ? PlayerOne : PlayerTwo;
+            Game _game = this;
 
             while (_state == StateOfTheGame.RUNNING)
             {
@@ -65,7 +66,7 @@ namespace TicTacToe
                 (InputType _typeOfInput, object _input) = GetInputAndType();
                 ProcessInput(_typeOfInput, _input);
 
-                if (WinChecker.IsGameWon())
+                if (WinChecker.IsGameWon(_game))
                 {
                     _winner = _currentPlayer;
                     Stop();
@@ -84,7 +85,6 @@ namespace TicTacToe
             _state = StateOfTheGame.OVER;
             ShowEndScreen();
         }
-
 
         /// <summary>
         /// Prompts the player for a field size
