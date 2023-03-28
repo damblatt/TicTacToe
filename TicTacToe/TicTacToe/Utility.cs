@@ -9,10 +9,10 @@ namespace TicTacToe
     public class Utility
     {
         /// <summary>
-        /// 
+        /// Reads an integer from console, with safety checks
         /// </summary>
-        /// <param name="min"></param>
-        /// <returns></returns>
+        /// <param name="min">minimum required int</param>
+        /// <returns>the int</returns>
         public static int ReadInt(int min)
         {
             string? _input;
@@ -26,9 +26,9 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// 
+        /// Reads a symbol from console
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the symbol</returns>
         public static char ReadSymbol()
         {
             string? _input;
