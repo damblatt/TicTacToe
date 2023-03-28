@@ -49,29 +49,5 @@ namespace TicTacToe
             } while (!_isValid);
             return (Game.InputType.Coordinate, _coordinate);
         }
-
-        /// <summary>
-        /// customizes the players name and symbol. if no name is entered, the name stays the same
-        /// </summary>
-        public void CustomizePlayerProfiles()
-        {
-            // name
-            {
-                Utility.Write($"{Name}, you can now enter a custom name if you want to: ");
-                string? _newPlayerName = Console.ReadLine().Trim();
-                if (_newPlayerName != null && _newPlayerName != "")
-                {
-                    Name = _newPlayerName;
-                }
-            }
-
-            // symbol
-            {
-                Utility.Write($"{Name}, please enter a symbol: ");
-                Symbol = Utility.ReadSymbol();
-            }
-
-            Game.SetIndividualPlayerInformation();
-        }
     }
 }

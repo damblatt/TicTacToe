@@ -104,12 +104,6 @@ namespace TicTacToe
             Field = new Field(FieldSize);
         }
 
-        public void SetIndividualPlayerInformation() // maybe migrate to player class?
-        {
-            SetIndividualNames();
-            SetIndividualSymbols();
-        }
-
         /// <summary>
         /// Prints the start screen for a few seconds
         /// </summary>
@@ -215,10 +209,37 @@ namespace TicTacToe
         private void AddPlayers(Player _playerOne, Player _playerTwo)
         {
             PlayerOne = _playerOne;
-            PlayerOne.AddPlayerToGame(this);
-
             PlayerTwo = _playerTwo;
-            PlayerTwo.AddPlayerToGame(this);
+        }
+
+        /// <summary>
+        /// customizes the players name and symbol. if no name is entered, the name stays the same
+        /// </summary>
+        public void CustomizePlayerProfile(Player _player)
+        {
+            // name
+            {
+                Utility.Write($"{_player.Name}, you can now enter a custom name if you want to: ");
+                string? _newPlayerName = Console.ReadLine().Trim();
+                if (_newPlayerName != null && _newPlayerName != "")
+                {
+                    _player.Name = _newPlayerName;
+                }
+            }
+
+            // symbol
+            {
+                Utility.Write($"{_player.Name}, please enter a symbol: ");
+                _player.Symbol = Utility.ReadSymbol();
+            }
+
+            SetIndividualPlayerInformation();
+        }
+
+        private void SetIndividualPlayerInformation()
+        {
+            SetIndividualNames();
+            SetIndividualSymbols();
         }
 
         private void SetIndividualNames()
