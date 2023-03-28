@@ -5,12 +5,11 @@ namespace TicTacToe
 {
     public class Field : ICloneable
     {
-        public int Size { get; set; }
+        public int Size { get; set; } = 3;
         public Cell[,] Cells { get; set; }
 
-        public Field(int _size)
+        public Field()
         {
-            Size = _size;
             Cells = new Cell[Size, Size];
             FillFieldWithCells();
         }

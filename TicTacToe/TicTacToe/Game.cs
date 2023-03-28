@@ -9,7 +9,6 @@ namespace TicTacToe
 {
     public class Game
     {
-        public static int FieldSize { get; set; } = 3;
         public Field Field { get; set; }
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
@@ -101,7 +100,7 @@ namespace TicTacToe
         /// </summary>
         public void CreateField()
         {
-            Field = new Field(FieldSize);
+            Field = new Field();
         }
 
         /// <summary>
