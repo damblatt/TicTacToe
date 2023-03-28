@@ -35,20 +35,18 @@ namespace TicTacToe
                 char _char;
                 int _number;
 
-                // first is digit
                 if (_firstCharacterAsInt >= '1' && _firstCharacterAsInt <= '9')
                 {
                     _char = _input[^1];
                     _number = int.Parse(_input[..^1]);
                 }
-                // first is chr
+
                 else
                 {
                     _char = _input[0];
                     _number = int.Parse(_input[1..]);
                 }
 
-                // create coordinate with the processed input information
                 int _row = _number - 1;
                 int _column = _char - 'a';
                 Coordinate coordinate = new Coordinate(_row, _column);

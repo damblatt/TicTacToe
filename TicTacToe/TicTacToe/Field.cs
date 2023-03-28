@@ -25,7 +25,6 @@ namespace TicTacToe
 
             _stringBuilder.Append($"{Environment.NewLine}    ");
 
-            // column header (letters)
             {
                 for (int _column = 0; _column < Size; _column++)
                 {
@@ -34,7 +33,6 @@ namespace TicTacToe
                 AppendHorizontalLine(_stringBuilder);
             }
 
-            // rows (numbers and fields)
             {
                 _stringBuilder.Append(Environment.NewLine);
                 for (int _row = 0; _row < Size; _row++)
@@ -65,9 +63,9 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// 
+        /// Gets the cell at the specified coordinate
         /// </summary>
-        /// <param name="_coordinate"></param>
+        /// <param name="_coordinate">the coordinate</param>
         /// <returns></returns>
         public Cell GetCellByCoordinate(Coordinate _coordinate)
         {
@@ -95,6 +93,10 @@ namespace TicTacToe
             return _stringBuilder;
         }
 
+        /// <summary>
+        /// Clones the field
+        /// </summary>
+        /// <returns>Clone of the field</returns>
         public object Clone()
         {
             Field newField = new Field(Size);

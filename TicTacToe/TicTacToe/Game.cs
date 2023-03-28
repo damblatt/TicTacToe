@@ -10,12 +10,14 @@ namespace TicTacToe
     public class Game
     {
         public static int FieldSize { get; set; } = 3;
-        public Field Field { get; set; }
+        public static Field Field { get; set; }
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
+
         private Player _currentPlayer;
         private StateOfTheGame _state;
         private Stack<(Field, Player)> _history;
+        private Player _winner;
 
         enum StateOfTheGame
         {
@@ -35,6 +37,8 @@ namespace TicTacToe
         public Game(Player playerOne, Player playerTwo)
         {
             CreateField();
+            ShowStartScreen();
+            
             AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
             _history = new Stack<(Field, Player)>();
@@ -61,24 +65,40 @@ namespace TicTacToe
                 (InputType _typeOfInput, object _input) = GetInputAndType();
                 ProcessInput(_typeOfInput, _input);
 
+                if (WinChecker.IsGameWon())
+                {
+                    _winner = _currentPlayer;
+                    Stop();
+                    return;
+                }
+
                 SetCurrentPlayer();
             }
         }
 
         /// <summary>
-        /// 
+        /// Stops the game
         /// </summary>
         public void Stop()
         {
-
+            _state = StateOfTheGame.OVER;
+            ShowEndScreen();
         }
 
+
+        /// <summary>
+        /// Prompts the player for a field size
+        /// </summary>
+        /// <returns>the field size</returns>
         public int GetFieldSize()
         {
             Utility.Write("Enter the field size: ");
             return Utility.ReadInt(3);
         }
 
+        /// <summary>
+        /// Creates a new game field
+        /// </summary>
         public void CreateField()
         {
             Field = new Field(FieldSize);
@@ -88,6 +108,27 @@ namespace TicTacToe
         {
             SetIndividualNames();
             SetIndividualSymbols();
+        }
+
+        /// <summary>
+        /// Prints the start screen for a few seconds
+        /// </summary>
+        private void ShowStartScreen()
+        {
+            Console.Write(
+                 "\r\n  _______ _   _______      _______             _       \r\n |__   __(_) |__   __|    |__   __|           (_)      \r\n    | |   _  ___| | __ _  ___| | ___   ___     _  __ _ \r\n    | |  | |/ __| |/ _` |/ __| |/ _ \\ / _ \\   | |/ _` |\r\n    | |  | | (__| | (_| | (__| | (_) |  __/   | | (_| |\r\n    |_|  |_|\\___|_|\\__,_|\\___|_|\\___/ \\___|   | |\\__,_|\r\n                                             _/ |      \r\n                                            |__/       \r\n"
+            );
+            Thread.Sleep( 1500 );
+            Console.Clear();
+        }
+
+        /// <summary>
+        /// Prints the end screen of the game
+        /// </summary>
+        private void ShowEndScreen()
+        {
+            Console.Clear();
+            Console.Write(_winner.Name + " has won the game!");
         }
 
         private void SetCurrentPlayer()

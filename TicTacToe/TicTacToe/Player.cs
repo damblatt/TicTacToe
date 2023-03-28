@@ -10,7 +10,6 @@ namespace TicTacToe
     {
         public string Name { get; set; }
         public char Symbol { get; set; }
-        public int Score { get; set; } = 0;
         public bool HasTurn { get; set; } = false;
         public bool HasWon { get; set; } = false;
         public Game Game{ get; set; }
@@ -21,6 +20,10 @@ namespace TicTacToe
             Symbol = _symbol;
         }
 
+        /// <summary>
+        /// Adds the player to the game
+        /// </summary>
+        /// <param name="_game">The game to add the player to</param>
         public void AddPlayerToGame(Game _game)
         {
             Game = _game;
@@ -69,11 +72,6 @@ namespace TicTacToe
             }
 
             Game.SetIndividualPlayerInformation();
-        }
-
-        public void AddScore(int _score)
-        {
-            Score += _score;
         }
     }
 }
