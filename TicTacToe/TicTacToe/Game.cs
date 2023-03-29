@@ -86,21 +86,35 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Prompts the player for a field size
+        /// Creates a new game field
         /// </summary>
-        /// <returns>the field size</returns>
-        public int GetFieldSize()
+        private void CreateField()
         {
-            Utility.Write("Enter the field size: ");
-            return Utility.ReadInt(3);
+            Field = new Field();
         }
 
         /// <summary>
-        /// Creates a new game field
+        /// customizes the players name and symbol. if no name is entered, the name stays the same
         /// </summary>
-        public void CreateField()
+        public void CustomizePlayerProfile(Player _player)
         {
-            Field = new Field();
+            // name
+            {
+                Utility.Write($"{_player.Name}, you can now enter a custom name if you want to: ");
+                string? _newPlayerName = Console.ReadLine().Trim();
+                if (_newPlayerName != null && _newPlayerName != "")
+                {
+                    _player.Name = _newPlayerName;
+                }
+            }
+
+            // symbol
+            {
+                Utility.Write($"{_player.Name}, please enter a symbol: ");
+                _player.Symbol = Utility.ReadSymbol();
+            }
+
+            SetIndividualPlayerInformation();
         }
 
         /// <summary>
@@ -209,30 +223,6 @@ namespace TicTacToe
         {
             PlayerOne = _playerOne;
             PlayerTwo = _playerTwo;
-        }
-
-        /// <summary>
-        /// customizes the players name and symbol. if no name is entered, the name stays the same
-        /// </summary>
-        public void CustomizePlayerProfile(Player _player)
-        {
-            // name
-            {
-                Utility.Write($"{_player.Name}, you can now enter a custom name if you want to: ");
-                string? _newPlayerName = Console.ReadLine().Trim();
-                if (_newPlayerName != null && _newPlayerName != "")
-                {
-                    _player.Name = _newPlayerName;
-                }
-            }
-
-            // symbol
-            {
-                Utility.Write($"{_player.Name}, please enter a symbol: ");
-                _player.Symbol = Utility.ReadSymbol();
-            }
-
-            SetIndividualPlayerInformation();
         }
 
         private void SetIndividualPlayerInformation()

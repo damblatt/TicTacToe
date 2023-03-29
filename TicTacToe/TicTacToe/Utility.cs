@@ -9,7 +9,7 @@ namespace TicTacToe
     public class Utility
     {
         /// <summary>
-        /// Reads an integer from console, with safety checks
+        /// reads an integer from console, with safety checks
         /// </summary>
         /// <param name="min">minimum required int</param>
         /// <returns>the int</returns>

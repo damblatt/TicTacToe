@@ -12,6 +12,11 @@ namespace TicTacToe
         public static bool IsWon { get; set; } = false;
         public static Game Game { get; set; }
 
+        /// <summary>
+        /// checks and return whether the game is won or not
+        /// </summary>
+        /// <param name="_game">game to be checked</param>
+        /// <returns></returns>
         public static bool IsGameWon(Game _game)
         {
             Game = _game;

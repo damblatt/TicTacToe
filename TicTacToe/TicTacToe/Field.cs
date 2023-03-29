@@ -98,7 +98,7 @@ namespace TicTacToe
         /// <returns>Clone of the field</returns>
         public object Clone()
         {
-            Field newField = new Field(Size);
+            Field newField = new Field();
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
