@@ -35,17 +35,15 @@ namespace TicTacToe
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            CreateField();
-            ShowStartScreen();
-            
-            AddPlayers(playerOne, playerTwo);
-            SetCurrentPlayer();
-            _history = new Stack<(Field, Player)>();
             _state = StateOfTheGame.IDLE;
 
-            //Field _field = (Field)Field.Clone();
-            Field _field = new Field();
-            _history.Push((_field, _currentPlayer));
+            CreateField();
+            ShowStartScreen();
+            AddPlayers(playerOne, playerTwo);
+            SetCurrentPlayer();
+
+            _history = new Stack<(Field, Player)>();
+            _history.Push(((Field)Field.Clone(), _currentPlayer));
         }
 
         /// <summary>
@@ -54,10 +52,10 @@ namespace TicTacToe
         public void Start()
         {
             _state = StateOfTheGame.RUNNING;
-
-            Random _random = new Random();
-            _currentPlayer = _random.Next(100) < 50 ? PlayerOne : PlayerTwo;
             Game _game = this;
+
+            Field _firstField = (Field)Field.Clone();
+            _history.Push((_firstField, _currentPlayer));
 
             while (_state == StateOfTheGame.RUNNING)
             {
@@ -217,7 +215,8 @@ namespace TicTacToe
         private void Back()
         {
             _history.Pop();
-            (Field, _currentPlayer) = _history.Peek();
+            (Field _field, _currentPlayer) = _history.Peek();
+            Field = (Field)_field.Clone();
         }
 
         private void AddPlayers(Player _playerOne, Player _playerTwo)
