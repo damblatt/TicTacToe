@@ -43,7 +43,8 @@ namespace TicTacToe
             _history = new Stack<(Field, Player)>();
             _state = StateOfTheGame.IDLE;
 
-            Field _field = (Field)Field.Clone();
+            //Field _field = (Field)Field.Clone();
+            Field _field = new Field();
             _history.Push((_field, _currentPlayer));
         }
 

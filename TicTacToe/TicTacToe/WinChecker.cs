@@ -10,7 +10,7 @@ namespace TicTacToe
     {
         public static int Depth { get; set; } = 0;
         public static bool IsWon { get; set; } = false;
-        public static Game Game { get; set; }
+        public static Game? Game { get; set; }
 
         /// <summary>
         /// checks and return whether the game is won or not
