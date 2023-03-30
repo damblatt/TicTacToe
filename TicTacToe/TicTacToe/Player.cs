@@ -44,7 +44,7 @@ namespace TicTacToe
                 }
                 else
                 {
-                    (_isValid, _coordinate) = Coordinate.TryCreateCoordinate(_input);
+                    (_isValid, _coordinate) = Coordinate.TryCreateCoordinateFromString(_input);
                 }
             } while (!_isValid);
             return (Game.InputType.Coordinate, _coordinate);
