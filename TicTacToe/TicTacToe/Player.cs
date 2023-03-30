@@ -41,7 +41,7 @@ namespace TicTacToe
             Utility.Write($"{Name}, enter field or type 'back' to undo the last move: ");
             do
             {
-                _input = Console.ReadLine().Trim().ToLower();
+                _input = Utility.ReadLine().Trim().ToLower();
                 if (_input == "back")
                 {
                     return (Game.InputType.Back, "back");
