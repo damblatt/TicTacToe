@@ -3,19 +3,24 @@ using System.Text;
 
 namespace TicTacToe
 {
+    /// <summary>
+    /// tic tac toe field
+    /// </summary>
     public class Field : ICloneable
     {
-        public string A { get; set; } 
+        /// <summary>
+        /// size of the field
+        /// </summary>
         public int Size { get; set; } = 3;
+
+        /// <summary>
+        /// array of cells
+        /// </summary>
         public Cell[,] Cells { get; set; }
 
-        public Field(int i)
-        {
-            A = "first field";
-            Cells = new Cell[Size, Size];
-            FillFieldWithCells();
-        }
-
+        /// <summary>
+        /// creates a field filled with cells
+        /// </summary>
         public Field()
         {
             Cells = new Cell[Size, Size];
@@ -23,7 +28,7 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// prints the current field
+        /// prints the field
         /// </summary>
         public void Print()
         {
@@ -54,14 +59,15 @@ namespace TicTacToe
                     _stringBuilder.Append(Environment.NewLine);
                 }
             }
+
             Utility.Write($"{_stringBuilder}\n");
         }
 
         /// <summary>
-        /// sets a cell to the provided player's desired position.
+        /// changes the symbol of the (empty) cell to the players symbol and sets its status to occupied
         /// </summary>
-        /// <param name="_player">The player</param>
-        /// <param name="_position">The cell position</param>
+        /// <param name="_player">player (player)</param>
+        /// <param name="_position">coordinate (coordinate)</param>
         public void OccupyCell(Player _player, Coordinate _coordinate)
         {
             Cell cell = Cells[_coordinate.Row, _coordinate.Column];
@@ -70,13 +76,20 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Gets the cell at the specified coordinate
+        /// creates and returns a deep copy of the field
         /// </summary>
-        /// <param name="_coordinate">the coordinate</param>
-        /// <returns></returns>
-        public Cell GetCellByCoordinate(Coordinate _coordinate)
+        /// <returns>Clone of the field</returns>
+        public object Clone()
         {
-            return Cells[_coordinate.Row, _coordinate.Column];
+            Field _field = new Field();
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    _field.Cells[i, j] = (Cell)Cells[i, j].Clone();
+                }
+            }
+            return _field;
         }
 
         private void FillFieldWithCells()
@@ -98,23 +111,6 @@ namespace TicTacToe
                 _stringBuilder.Append("----");
             }
             return _stringBuilder;
-        }
-
-        /// <summary>
-        /// Clones the field
-        /// </summary>
-        /// <returns>Clone of the field</returns>
-        public object Clone()
-        {
-            Field newField = new Field();
-            for (int i = 0; i < Size; i++)
-            {
-                for (int j = 0; j < Size; j++)
-                {
-                    newField.Cells[i, j] = (Cell)Cells[i, j].Clone();
-                }
-            }
-            return newField;
         }
     }
 }

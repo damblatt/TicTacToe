@@ -44,10 +44,10 @@ namespace TicTacToe
         /// <returns>deep copy of the cell</returns>
         public object Clone()
         {
-            Cell newCell = new Cell(Row, Column);
-            newCell.Symbol = Symbol;
-            newCell.Free = Free;
-            return newCell;
+            Cell _cell = new Cell(Row, Column);
+            _cell.Symbol = Symbol;
+            _cell.Free = Free;
+            return _cell;
         }
     }
 }
