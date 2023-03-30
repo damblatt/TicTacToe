@@ -112,7 +112,7 @@ namespace TicTacToe
             // name
             {
                 Utility.Write($"{_player.Name}, you can now enter a custom name if you want to: ");
-                string? _newPlayerName = Console.ReadLine().Trim();
+                string? _newPlayerName = Utility.ReadLine().Trim();
                 if (_newPlayerName != null && _newPlayerName != "")
                 {
                     _player.Name = _newPlayerName;
@@ -133,7 +133,7 @@ namespace TicTacToe
         /// </summary>
         private void ShowStartScreen()
         {
-            Console.Write(
+            Utility.Write(
                  "\r\n  _______ _   _______      _______             _       \r\n |__   __(_) |__   __|    |__   __|           (_)      \r\n    | |   _  ___| | __ _  ___| | ___   ___     _  __ _ \r\n    | |  | |/ __| |/ _` |/ __| |/ _ \\ / _ \\   | |/ _` |\r\n    | |  | | (__| | (_| | (__| | (_) |  __/   | | (_| |\r\n    |_|  |_|\\___|_|\\__,_|\\___|_|\\___/ \\___|   | |\\__,_|\r\n                                             _/ |      \r\n                                            |__/       \r\n"
             );
             Thread.Sleep( 1500 );
@@ -146,7 +146,7 @@ namespace TicTacToe
         private void ShowEndScreen()
         {
             Console.Clear();
-            Console.Write(_winner.Name + " has won the game!");
+            Utility.Write(_winner.Name + " has won the game!");
         }
 
         private void SetCurrentPlayer()

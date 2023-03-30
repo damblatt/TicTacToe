@@ -18,7 +18,7 @@ namespace TicTacToe
             string? _input;
             char _char;
             bool _isValid;
-            while (!(_isValid = !char.TryParse(_input = Console.ReadLine(), out _char)))
+            while (!(_isValid = !char.TryParse(_input = Utility.ReadLine(), out _char)))
             {
                 Console.Write($"{_input} is an invalid symbol. \nPlease enter a valid symbol (one character): ");
             }
@@ -40,7 +40,7 @@ namespace TicTacToe
         /// <returns>input (string)</returns>
         public static string ReadLine()
         {
-            return Console.ReadLine();
+            return Utility.ReadLine();
         }
     }
 }
