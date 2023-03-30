@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
+    /// <summary>
+    /// game of tic tac toe
+    /// </summary>
     public class Game
     {
         public Field Field { get; set; }
