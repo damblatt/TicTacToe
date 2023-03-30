@@ -10,47 +10,34 @@ namespace TicTacToe
     public class Utility
     {
         /// <summary>
-        /// reads an integer from console, with safety checks
-        /// </summary>
-        /// <param name="min">minimum required int</param>
-        /// <returns>the int</returns>
-        public static int ReadInt(int min)
-        {
-            string? _input;
-            int _n;
-            bool _criteria;
-            while (_criteria = (!Int32.TryParse(_input = Console.ReadLine(), out _n) || _n < min))
-            {
-                Console.Write($"{_input} is an invalid number.\nPlease enter a valid number: ");
-            }
-            return _n;
-        }
-
-        /// <summary>
-        /// Reads a symbol from console
+        /// reads a symbol from the console
         /// </summary>
         /// <returns>the symbol</returns>
         public static char ReadSymbol()
         {
             string? _input;
-            char _chr;
-            bool _criteria;
-            while (_criteria = (!Char.TryParse(_input = Console.ReadLine(), out _chr)))
+            char _char;
+            bool _isValid;
+            while (!(_isValid = !char.TryParse(_input = Console.ReadLine(), out _char)))
             {
                 Console.Write($"{_input} is an invalid symbol. \nPlease enter a valid symbol (one character): ");
             }
-            return _chr;
+            return _char;
         }
 
         /// <summary>
-        /// prints the given word
+        /// prints the given word to the console
         /// </summary>
-        /// <param name="word"></param>
+        /// <param name="word">word (string)</param>
         public static void Write(string word)
         {
             Console.Write(word);
         }
 
+        /// <summary>
+        /// reads a string from the console
+        /// </summary>
+        /// <returns>input (string)</returns>
         public static string ReadLine()
         {
             return Console.ReadLine();
