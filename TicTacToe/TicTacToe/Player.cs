@@ -8,12 +8,21 @@ namespace TicTacToe
 {
     public class Player
     {
+        /// <summary>
+        /// name of the player
+        /// </summary>
         public string Name { get; set; }
-        public char Symbol { get; set; }
-        public bool HasTurn { get; set; } = false;
-        public bool HasWon { get; set; } = false;
-        public Game Game{ get; set; }
 
+        /// <summary>
+        /// symbol of the player
+        /// </summary>
+        public char Symbol { get; set; }
+
+        /// <summary>
+        /// creates a player with the given nane and symbol
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <param name="_symbol"></param>
         public Player(string _name, char _symbol)
         {
             Name = _name;
@@ -21,14 +30,9 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Adds the player to the game
+        /// reads the players input and returns the type of the operation with the according object
         /// </summary>
-        /// <param name="_game">The game to add the player to</param>
-        public void AddPlayerToGame(Game _game)
-        {
-            Game = _game;
-        }
-
+        /// <returns>input type (inputtype) and object (coordinate/string)</returns>
         public (Game.InputType, object) GetInputAndType()
         {
             bool _isValid;
