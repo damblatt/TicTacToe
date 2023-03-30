@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
+    /// <summary>
+    /// win checker
+    /// </summary>
     public class WinChecker
     {
-        public static int Depth { get; set; } = 0;
-        public static bool IsWon { get; set; } = false;
-        public static Game? Game { get; set; }
+        private static bool IsWon { get; set; } = false;
+        private static Game? Game { get; set; }
 
         /// <summary>
-        /// checks and return whether the game is won or not
+        /// sets the state of the game to over if a player won the game
         /// </summary>
-        /// <param name="_game">game to be checked</param>
-        /// <returns></returns>
-        public static bool IsGameWon(Game _game)
+        /// <param name="_game">game (game)</param>
+        public static void SetCurrentState(Game _game)
         {
             Game = _game;
-            if (CheckHorizontalLine()) return IsWon;
-            if (CheckVerticalLine()) return IsWon;
-            CheckDiagonalLine();
-            return IsWon;
+            if (IsWonByHorizontalLine() || IsWonByVerticalLine() || IsWonByDiagonalLine()) {
+                Game._state = Game.State.OVER;
+            }
         }
 
-        private static bool CheckHorizontalLine()
+        private static bool IsWonByHorizontalLine()
         {
             for (int _row = 0; _row < Game.Field.Size; _row++)
             {
@@ -36,7 +36,7 @@ namespace TicTacToe
             return IsWon;
         }
 
-        private static bool CheckVerticalLine()
+        private static bool IsWonByVerticalLine()
         {
             for (int _column = 0; _column < Game.Field.Size; _column++)
             {
@@ -46,7 +46,7 @@ namespace TicTacToe
             return IsWon;
         }
 
-        private static bool CheckDiagonalLine()
+        private static bool IsWonByDiagonalLine()
         {
             IsWon = AreEqual(Game.Field.Cells[0, 0].Symbol, Game.Field.Cells[1, 1].Symbol, Game.Field.Cells[2, 2].Symbol);
             if (IsWon) return IsWon;

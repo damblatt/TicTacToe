@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,16 +13,7 @@ namespace TicTacToe
     /// </summary>
     public class Game
     {
-        public Field Field { get; set; }
-        public Player PlayerOne { get; set; }
-        public Player PlayerTwo { get; set; }
-
-        private Player _currentPlayer;
-        private StateOfTheGame _state;
-        private Stack<(Field, Player)> _history;
-        private Player _winner;
-
-        enum StateOfTheGame
+        public enum State
         {
             IDLE, RUNNING, OVER
         }
@@ -32,13 +24,36 @@ namespace TicTacToe
         }
 
         /// <summary>
+        /// field
+        /// </summary>
+        public Field Field { get; set; }
+
+        /// <summary>
+        /// player number one
+        /// </summary>
+        public Player PlayerOne { get; set; }
+
+        /// <summary>
+        /// player number two
+        /// </summary>
+        public Player PlayerTwo { get; set; }
+
+        private Player _currentPlayer { get; set; }
+
+        public State _state { get; set; }
+
+        private Stack<(Field, Player)> _history { get; set; }
+
+        private Player _winner { get; set; }
+
+        /// <summary>
         /// creates a field, adds the players to the game and randomly sets the current player
         /// </summary>
         /// <param name="playerOne">Player one</param>
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            _state = StateOfTheGame.IDLE;
+            _state = State.IDLE;
 
             CreateField();
             ShowStartScreen();
@@ -50,45 +65,39 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// 
+        /// starts the game
         /// </summary>
         public void Start()
         {
-            _state = StateOfTheGame.RUNNING;
-            Game _game = this;
+            _state = State.RUNNING;
 
-            Field _firstField = (Field)Field.Clone();
-            _history.Push((_firstField, _currentPlayer));
+            Field _field = (Field)Field.Clone();
+            _history.Push((_field, _currentPlayer));
 
-            while (_state == StateOfTheGame.RUNNING)
+            while (_state == State.RUNNING)
             {
                 PrintField();
 
                 (InputType _typeOfInput, object _input) = GetInputAndType();
                 ProcessInput(_typeOfInput, _input);
 
-                if (WinChecker.IsGameWon(_game))
-                {
-                    _winner = _currentPlayer;
-                    Stop();
-                    return;
-                }
+                CheckGameState();
 
                 SetCurrentPlayer();
             }
         }
 
         /// <summary>
-        /// Stops the game
+        /// stops the game
         /// </summary>
         public void Stop()
         {
-            _state = StateOfTheGame.OVER;
+            _state = State.OVER;
             ShowEndScreen();
         }
 
         /// <summary>
-        /// Creates a new game field
+        /// creates a new game field
         /// </summary>
         private void CreateField()
         {
@@ -120,7 +129,7 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Prints the start screen for a few seconds
+        /// prints the start screen for a few seconds
         /// </summary>
         private void ShowStartScreen()
         {
@@ -132,7 +141,7 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// Prints the end screen of the game
+        /// prints the end screen of the game
         /// </summary>
         private void ShowEndScreen()
         {
@@ -244,6 +253,29 @@ namespace TicTacToe
         {
             if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol != 'O') PlayerTwo.Symbol = 'O';
             else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';
+        }
+
+        private void CheckGameState()
+        {
+            if (_state == State.OVER)
+            {
+                if (WantsToUndoLastMoves())
+                {
+                    Back();
+                }
+                else
+                {
+                    _winner = _currentPlayer;
+                    Stop();
+                    return;
+                }
+            }
+        }
+
+        private bool WantsToUndoLastMoves()
+        {
+            Utility.Write($"You can undo the last two moves if you want to. Otherwise, {_currentPlayer} will win the game! (y/n): ");
+            return (Utility.ReadLine().Trim() == "y");
         }
     }
 }
