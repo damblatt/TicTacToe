@@ -3,17 +3,17 @@
 
 ## Inhaltsverzeichnis
 
-→ [Backlog](###backlog)
+→ [Backlog](#backlog)
 
-&emsp;↳ [User Stories](####user-stories)&emsp;
+&emsp;↳ [User Stories](#user-stories)&emsp;
 
-→ [Dokumentation](###dokumentation)
+→ [Dokumentation](#dokumentation)
 
-&emsp;↳ [Sprint 1](####07-03-2023-(Sprint-1))
+&emsp;↳ [Sprint 1](#14-03-2023-sprint-1)
 
-&emsp;↳ [Sprint 2](####14-03-2023-(Sprint-2))
+&emsp;↳ [Sprint 2](#14-03-2023-sprint-2)
 
-&emsp;↳ [Sprint 3](####21-03-2023 (Sprint 3))
+&emsp;↳ [Sprint 3](#14-03-2023-sprint-3)
 
 ## Projekt
 
