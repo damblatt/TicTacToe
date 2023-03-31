@@ -23,7 +23,7 @@
 
 ####  Produktvision
 
-Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man TicTacToe spielen kann. Was unser Produkt jedoch hervorhebt, ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann.
+Unser Ziel bei diesem Projekt ist es, ein Programm zu erstellen, in dem man TicTacToe spielen kann. Was unser TicTacToe jedoch speziell macht ist die Möglichkeit, einen Spielzug rückgängig zu machen. Der Name der Spieler und deren Zeichen können zudem personalisiert werden.
 
 #### User-Stories
 
@@ -99,17 +99,19 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man TicTacTo
 
       
 
-### Dokumentation
+## Dokumentation
 
-### Unit Testing 
+### Unit Testing
 
-Für einige Methoden haben wir Unit Tests geschrieben. Getestet haben wir nur öffentliche Methoden (public) wie zum Beispiel die Methode 'TryCreateCoordinate(string input)' aus der Klasse 'Coordinate' oder zum Beispiel den WinChecker.
+Für einige Methoden haben wir Unit Tests geschrieben. Getestet haben wir nur öffentliche Methoden (public) wie zum Beispiel die Methode 'TryCreateCoordinate(string input)' aus der Klasse 'Coordinate' oder zum Beispiel den WinChecker. Alle Unit Tests sind hier zu finden: [Unit Testing](https://github.com/damblatt/TicTacToe/tree/main/TicTacToe/TicTacToe.Test).
+
+
 
 ### 07-03-2023 (Sprint 1)
 
 #### Sprintziele
 
-- Ersten Tasks abarbeiten
+- Erste Tasks bearbeiten
 - Organisation bereitstellen
 
 #### Tätigkeit
@@ -118,26 +120,32 @@ Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind ers
 
 #### Review & Retrospektive Protokoll
 
-In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund dafür ist unser Mangel an Planung wie mir die Aufgaben in unserer Freizeit organisieren. Trotzdem wurde die Organisation sehr weit gebracht, was uns beim nächsten Sprint sicher sehr helfen wird.
+In diesem Sprint haben wir uns Sprintziel leider nicht erreicht. Grund dafür ist wohl der Mangel an Planung. Trotzdem kamen wir schlussendlich weit und konnten alle Plattformen wie Github und Azure DevOps aufsetzen. Im nächsten Sprint möchten wir den Fokus mehr aufs Coden legen, da das Organisatorische nun erledigt ist.
+
+
 
 ### 14-03-2023 (Sprint 2)
 
 #### Sprintziele
 
+- Sprintziele Sprint 1
+
 - Objektorientierte Umsetzung
   - Alle Klassen & Methoden bereitstellen
 - Funktionierendes Spielfeld
   - Spielereingaben
-  - Fehlermeldungen bei ungültigen Eingaben
+  - Fehlermeldung bei ungültiger Eingabe
 
 #### Tätigkeit
 
-Den zweiten Sprint starteten wir abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben, welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
+In den zweiten Sprint starteten wir abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. Die Aufgaben, welche wir im ersten Sprint noch nicht im erledigen hatten, haben wir im Unterricht bearbeitet. Die restlichen Sprintziele haben wir zu Hause erledigt.
 
 #### Review & Retrospektive Protokoll
 
 In diesem Sprint haben wir unser Sprintziel erreicht.
-wir haben dieses Mal uns besser ausserhalb von Unterricht organisiert. das einzige Problem was aufgetreten ist, wir hatten Probleme mit Rücksicht auf die anderen GitHub zu arbeiten.
+Wir haben uns dieses Mal besser ausserhalb vom Unterricht organisiert. Ein Problem welches während des zweiten Sprints öfters auftrat sind Merge Conflicts, welche uns sehr viel Zeit gekostet haben.
+
+
 
 ### 21-03-2023 (Sprint 3)
 
@@ -149,17 +157,19 @@ wir haben dieses Mal uns besser ausserhalb von Unterricht organisiert. das einzi
 
   - Gewinner anzeigen
 
+  - Unentschieden anzeigen
+
 - Logik fertigstellen
-  - Logik um zu Gewinnen implementieren
+  - Gewinnlogik implementieren
   - Undo Funktion implementieren
-- Projekt fertigstellen
+- Refactoring
+- Unit Testing
 
 #### Tätigkeit
 
-Den dritten Sprint starteten wir motiviert, jedoch gab es Probleme beim Implementieren von dem Stack für die Undo Funktion was unseren Fortschritt einschränkte. Jedoch waren wir entschlossen ein Präsentables Produkt am Ende des Sprints zu haben.
+Den dritten Sprint starteten wir motiviert. Es gab jedoch Probleme beim Implementieren vom Stack für die Undo-Funktion. Nach einiger Recherche und Debugging wurde uns klar, dass das Problem darin lag, wie wir das aktuelle Feld in den Stack laden. Wir informierten uns also über Shallow und Deep Copies und wandten unser Wissen an.
 
 #### Review & Retrospektive Protokoll
 
 In diesem Sprint haben wir unser Sprintziel erreicht.
-wir haben diesen Sprint in unserer Freizeit viel Zeit investiert damit wir unser Ziel erreichen konnten. 
-Das hatte leider zur Folge, dass wir schnell an Motivation an dem Projekt verloren haben, trotzdem sind wir zufrieden mit dem Resultat.
+Wir haben in unserer Freizeit viel Zeit investiert, damit wir unser Ziel erreichen und es hat sich auf jeden Fall gelohnt. Der Stack funktioniert jetzt einwandfrei und die Unit Tests sind geschrieben.
