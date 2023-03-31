@@ -56,7 +56,6 @@ namespace TicTacToe
             _state = State.IDLE;
 
             CreateField();
-            ShowStartScreen();
             AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
 
@@ -69,6 +68,7 @@ namespace TicTacToe
         /// </summary>
         public void Start()
         {
+            ShowStartScreen();
             _state = State.RUNNING;
 
             Field _field = (Field)Field.Clone();
