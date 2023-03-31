@@ -22,11 +22,11 @@ namespace TicTacToe
         {
             Game = _game;
             if (IsWonByHorizontalLine() || IsWonByVerticalLine() || IsWonByDiagonalLine()) {
-                Game._state = Game.State.Won;
+                Game.State = Game.GameState.Won;
             }
             else if (IsDraw())
             {
-                Game._state = Game.State.Draw;
+                Game.State = Game.GameState.Draw;
             }
         }
 

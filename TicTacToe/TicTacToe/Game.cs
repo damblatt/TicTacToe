@@ -13,7 +13,7 @@ namespace TicTacToe
     /// </summary>
     public class Game
     {
-        public enum State
+        public enum GameState
         {
             Idle, Running, Won, Draw
         }
@@ -38,9 +38,12 @@ namespace TicTacToe
         /// </summary>
         public Player PlayerTwo { get; set; }
 
-        private Player _currentPlayer { get; set; }
+        /// <summary>
+        /// state of the game
+        /// </summary>
+        public GameState State { get; set; }
 
-        public State _state { get; set; }
+        private Player _currentPlayer { get; set; }
 
         private Stack<(Field, Player)> _history { get; set; }
 
@@ -53,7 +56,7 @@ namespace TicTacToe
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            _state = State.Idle;
+            State = GameState.Idle;
 
             CreateField();
             AddPlayers(playerOne, playerTwo);
@@ -69,12 +72,12 @@ namespace TicTacToe
         public void Start()
         {
             ShowStartScreen();
-            _state = State.Running;
+            State = GameState.Running;
 
             Field _field = (Field)Field.Clone();
             _history.Push((_field, _currentPlayer));
 
-            while (_state == State.Running)
+            while (State == GameState.Running)
             {
                 PrintField();
 
@@ -82,7 +85,7 @@ namespace TicTacToe
                 ProcessInput(_typeOfInput, _input);
 
                 WinChecker.SetCurrentState(this);
-                if (_state == State.Won)
+                if (State == GameState.Won)
                 {
                     break;
                 }
@@ -99,11 +102,11 @@ namespace TicTacToe
         /// </summary>
         public void Stop()
         {
-            if (_state == State.Won)
+            if (State == GameState.Won)
             {
                 ShowWinScreen();
             }
-            else if (_state == State.Draw)
+            else if (State == GameState.Draw)
             {
                 ShowDrawScreen();
             }
@@ -146,7 +149,7 @@ namespace TicTacToe
         /// </summary>
         private void ShowStartScreen()
         {
-            string _startScreenPath = "C:\\repos\\TicTacToe\\TicTacToe\\TicTacToe\\StartScreen.txt";
+            string _startScreenPath = "./StartScreen.txt";
             Utility.Write((File.ReadAllText(_startScreenPath)));
             //Utility.Write(
             //     "\r\n  _______ _   _______      _______             _       \r\n |__   __(_) |__   __|    |__   __|           (_)      \r\n    | |   _  ___| | __ _  ___| | ___   ___     _  __ _ \r\n    | |  | |/ __| |/ _` |/ __| |/ _ \\ / _ \\   | |/ _` |\r\n    | |  | | (__| | (_| | (__| | (_) |  __/   | | (_| |\r\n    |_|  |_|\\___|_|\\__,_|\\___|_|\\___/ \\___|   | |\\__,_|\r\n                                             _/ |      \r\n                                            |__/       \r\n"
@@ -249,7 +252,7 @@ namespace TicTacToe
 
         private void Back()
         {
-            _state = State.Running;
+            State = GameState.Running;
             _history.Pop();
             (Field _field, _currentPlayer) = _history.Peek();
             Field = (Field)_field.Clone();
