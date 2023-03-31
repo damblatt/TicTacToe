@@ -112,5 +112,20 @@ namespace TicTacToe
             }
             return _stringBuilder;
         }
+
+        public bool AreAllFieldsOccupied()
+        {
+            for (int _row = 0; _row < Size; _row++)
+            {
+                for (int _column = 0; _column < Size; _column++)
+                {
+                    if (Cells[_row, _column].Symbol == ' ')
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

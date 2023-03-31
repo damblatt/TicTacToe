@@ -13,9 +13,9 @@ namespace TicTacToe
     /// </summary>
     public class Game
     {
-        public enum State
+        public enum GameState
         {
-            IDLE, RUNNING, OVER
+            Idle, Running, Won, Draw
         }
 
         public enum InputType
@@ -38,9 +38,12 @@ namespace TicTacToe
         /// </summary>
         public Player PlayerTwo { get; set; }
 
-        private Player _currentPlayer { get; set; }
+        /// <summary>
+        /// state of the game
+        /// </summary>
+        public GameState State { get; set; }
 
-        public State _state { get; set; }
+        private Player _currentPlayer { get; set; }
 
         private Stack<(Field, Player)> _history { get; set; }
 
@@ -53,7 +56,7 @@ namespace TicTacToe
         /// <param name="playerTwo">Player two</param>
         public Game(Player playerOne, Player playerTwo)
         {
-            _state = State.IDLE;
+            State = GameState.Idle;
 
             CreateField();
             AddPlayers(playerOne, playerTwo);
@@ -69,22 +72,29 @@ namespace TicTacToe
         public void Start()
         {
             ShowStartScreen();
-            _state = State.RUNNING;
+            State = GameState.Running;
 
             Field _field = (Field)Field.Clone();
             _history.Push((_field, _currentPlayer));
 
-            while (_state == State.RUNNING)
+            while (State == GameState.Running)
             {
                 PrintField();
 
                 (InputType _typeOfInput, object _input) = GetInputAndType();
                 ProcessInput(_typeOfInput, _input);
 
-                CheckGameState();
+                WinChecker.SetCurrentState(this);
+                if (State == GameState.Won)
+                {
+                    break;
+                }
 
                 SetCurrentPlayer();
             }
+
+            _winner = _currentPlayer;
+            Stop();
         }
 
         /// <summary>
@@ -92,8 +102,14 @@ namespace TicTacToe
         /// </summary>
         public void Stop()
         {
-            _state = State.OVER;
-            ShowEndScreen();
+            if (State == GameState.Won)
+            {
+                ShowWinScreen();
+            }
+            else if (State == GameState.Draw)
+            {
+                ShowDrawScreen();
+            }
         }
 
         /// <summary>
@@ -120,33 +136,29 @@ namespace TicTacToe
             SetIndividualPlayerInformation();
         }
 
-        /// <summary>
-        /// creates a new game field
-        /// </summary>
         private void CreateField()
         {
             Field = new Field();
         }
 
-        /// <summary>
-        /// prints the start screen for a few seconds
-        /// </summary>
         private void ShowStartScreen()
         {
-            Utility.Write(
-                 "\r\n  _______ _   _______      _______             _       \r\n |__   __(_) |__   __|    |__   __|           (_)      \r\n    | |   _  ___| | __ _  ___| | ___   ___     _  __ _ \r\n    | |  | |/ __| |/ _` |/ __| |/ _ \\ / _ \\   | |/ _` |\r\n    | |  | | (__| | (_| | (__| | (_) |  __/   | | (_| |\r\n    |_|  |_|\\___|_|\\__,_|\\___|_|\\___/ \\___|   | |\\__,_|\r\n                                             _/ |      \r\n                                            |__/       \r\n"
-            );
-            Thread.Sleep( 1500 );
             Console.Clear();
+            string _startScreenPath = "./StartScreen.txt";
+            Utility.Write((File.ReadAllText(_startScreenPath)));
+            Thread.Sleep( 2000 );
         }
 
-        /// <summary>
-        /// prints the end screen of the game
-        /// </summary>
-        private void ShowEndScreen()
+        private void ShowWinScreen()
         {
             Console.Clear();
             Utility.Write(_winner.Name + " has won the game!");
+        }
+
+        private void ShowDrawScreen()
+        {
+            Console.Clear();
+            Utility.Write("Draw!");
         }
 
         private void SetCurrentPlayer()
@@ -226,7 +238,7 @@ namespace TicTacToe
 
         private void Back()
         {
-            _state = State.RUNNING;
+            State = GameState.Running;
             _history.Pop();
             (Field _field, _currentPlayer) = _history.Peek();
             Field = (Field)_field.Clone();
@@ -254,17 +266,6 @@ namespace TicTacToe
         {
             if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol != 'O') PlayerTwo.Symbol = 'O';
             else if (PlayerTwo.Symbol == PlayerOne.Symbol && PlayerOne.Symbol == 'O') PlayerOne.Symbol = 'X';
-        }
-
-        private void CheckGameState()
-        {
-            WinChecker.SetCurrentState(this);
-            if (_state == State.OVER)
-            {
-                _winner = _currentPlayer;
-                Stop();
-                return;
-            }
         }
     }
 }

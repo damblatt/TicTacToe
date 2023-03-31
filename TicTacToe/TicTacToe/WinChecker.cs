@@ -22,7 +22,11 @@ namespace TicTacToe
         {
             Game = _game;
             if (IsWonByHorizontalLine() || IsWonByVerticalLine() || IsWonByDiagonalLine()) {
-                Game._state = Game.State.OVER;
+                Game.State = Game.GameState.Won;
+            }
+            else if (IsDraw())
+            {
+                Game.State = Game.GameState.Draw;
             }
         }
 
@@ -57,6 +61,15 @@ namespace TicTacToe
         private static bool AreEqual(object a, object b, object c)
         {
             return (a.Equals(b) && b.Equals(c) && !a.Equals(' '));
+        }
+
+        private static bool IsDraw()
+        {
+            if (Game.Field.AreAllFieldsOccupied())
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

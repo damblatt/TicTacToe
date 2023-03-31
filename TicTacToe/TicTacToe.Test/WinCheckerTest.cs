@@ -16,7 +16,7 @@
 
             WinChecker.SetCurrentState(_game);
 
-            Assert.IsTrue(_game._state == Game.State.OVER);
+            Assert.IsTrue(_game.State == Game.GameState.Won);
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@
 
             WinChecker.SetCurrentState(_game);
 
-            Assert.IsTrue(_game._state == Game.State.OVER);
+            Assert.IsTrue(_game.State == Game.GameState.Won);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@
 
             WinChecker.SetCurrentState(_game);
 
-            Assert.IsTrue(_game._state == Game.State.OVER);
+            Assert.IsTrue(_game.State == Game.GameState.Won);
         }
     }
 }
