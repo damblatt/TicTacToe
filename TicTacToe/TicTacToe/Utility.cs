@@ -40,7 +40,7 @@ namespace TicTacToe
         /// <returns>input (string)</returns>
         public static string ReadLine()
         {
-            return Utility.ReadLine();
+            return Console.ReadLine();
         }
     }
 }

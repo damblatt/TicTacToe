@@ -226,6 +226,7 @@ namespace TicTacToe
 
         private void Back()
         {
+            _state = State.RUNNING;
             _history.Pop();
             (Field _field, _currentPlayer) = _history.Peek();
             Field = (Field)_field.Clone();
@@ -257,6 +258,7 @@ namespace TicTacToe
 
         private void CheckGameState()
         {
+            WinChecker.SetCurrentState(this);
             if (_state == State.OVER)
             {
                 if (WantsToUndoLastMoves())
