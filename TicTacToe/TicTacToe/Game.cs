@@ -56,7 +56,6 @@ namespace TicTacToe
             _state = State.IDLE;
 
             CreateField();
-            ShowStartScreen();
             AddPlayers(playerOne, playerTwo);
             SetCurrentPlayer();
 
@@ -69,6 +68,7 @@ namespace TicTacToe
         /// </summary>
         public void Start()
         {
+            ShowStartScreen();
             _state = State.RUNNING;
 
             Field _field = (Field)Field.Clone();
@@ -97,14 +97,6 @@ namespace TicTacToe
         }
 
         /// <summary>
-        /// creates a new game field
-        /// </summary>
-        private void CreateField()
-        {
-            Field = new Field();
-        }
-
-        /// <summary>
         /// customizes the players name and symbol. if no name is entered, the name stays the same
         /// </summary>
         public void CustomizePlayerProfile(Player _player)
@@ -126,6 +118,14 @@ namespace TicTacToe
             }
 
             SetIndividualPlayerInformation();
+        }
+
+        /// <summary>
+        /// creates a new game field
+        /// </summary>
+        private void CreateField()
+        {
+            Field = new Field();
         }
 
         /// <summary>
@@ -226,6 +226,7 @@ namespace TicTacToe
 
         private void Back()
         {
+            _state = State.RUNNING;
             _history.Pop();
             (Field _field, _currentPlayer) = _history.Peek();
             Field = (Field)_field.Clone();
@@ -257,25 +258,13 @@ namespace TicTacToe
 
         private void CheckGameState()
         {
+            WinChecker.SetCurrentState(this);
             if (_state == State.OVER)
             {
-                if (WantsToUndoLastMoves())
-                {
-                    Back();
-                }
-                else
-                {
-                    _winner = _currentPlayer;
-                    Stop();
-                    return;
-                }
+                _winner = _currentPlayer;
+                Stop();
+                return;
             }
-        }
-
-        private bool WantsToUndoLastMoves()
-        {
-            Utility.Write($"You can undo the last two moves if you want to. Otherwise, {_currentPlayer} will win the game! (y/n): ");
-            return (Utility.ReadLine().Trim() == "y");
         }
     }
 }

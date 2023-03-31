@@ -6,7 +6,7 @@ namespace TicTacToe
     /// <summary>
     /// tic tac toe field
     /// </summary>
-    public class Field : ICloneable
+    public class Field
     {
         /// <summary>
         /// size of the field
