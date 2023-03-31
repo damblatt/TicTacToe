@@ -1,16 +1,19 @@
+
 # TicTacToe
 
 ## Inhaltsverzeichnis
 
-→ [Backlog](#backlog)
+→ [Backlog](###backlog)
 
-&emsp;↳ [User Stories](#user-stories)&emsp;
+&emsp;↳ [User Stories](####user-stories)&emsp;
 
-→ [Dokumentation](#dokumentation)
+→ [Dokumentation](###dokumentation)
 
-&emsp;↳ [Sprint 1](#07-03-2023-(Sprint-1))
+&emsp;↳ [Sprint 1](####07-03-2023-(Sprint-1))
 
-&emsp;↳ [Sprint 2](#14-03-2023-(Sprint-2))
+&emsp;↳ [Sprint 2](####14-03-2023-(Sprint-2))
+
+&emsp;↳ [Sprint 3](####21-03-2023 (Sprint 3))
 
 ## Projekt
 
@@ -18,7 +21,7 @@
 
 ####  Produktvision
 
-Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictactoe Spielen kann. Was unser Produkt jedoch hervorhebt ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann.
+Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man TicTacToe spielen kann. Was unser Produkt jedoch hervorhebt, ist unsere Personalisierbarkeit. Wir wollen das Jeder Spieler sein eigenes Zeichen bestimmen kann.
 
 #### User-Stories
 
@@ -28,7 +31,7 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 >
 > `Akzeptanzkriterien`
 >
-> ​	-> (optional) Tasks
+> 	-> (optional) Tasks
 
 <br>
 
@@ -48,7 +51,7 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
    <br>
 
-3. > Als Spieler möchte ich, dass ich die Symbole frei wählen kann, damit ich selber entscheiden kann, womit ich spielen möchte.
+3. > Als Spieler möchte ich, dass ich die Symbole frei wählen kann, damit ich selbst entscheiden kann, womit ich spielen möchte.
    >
    > `Die Spieler können vor dem Spielstart ihre Symbole frei auswählen.`
    >
@@ -84,17 +87,17 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
 8. > Als Spieler möchte ich, dass das Spiel beendet wird wenn eine Reihe vertikal, horizontal oder diagonal mit dem Symbol eines Spielers belegt ist oder wenn es zu einem Unentschieden kommt, damit das Spiel mit einem klaren Spielstand endet.
    >
-   > `Das Spiel kann durch die TicTacToe Regeln gewonnen bzw. verloren werden.`
+   > `Das Spiel kann durch die TicTacToe Regeln gewonnen bzw. verloren werden. `
 
    <br>
-   
-1. > Als Product Owner möchte ich, dass das Projekt Gut dokumentiert wurde und sauber auf GitHub dargestellt ist.
+
+9. > Als Product Owner möchte ich, dass das Projekt Gut dokumentiert wurde und sauber auf GitHub dargestellt ist.
    >
-   > `Das ganze Developerteam hat das finale Projektresultat kontrolliert und zugestummen es so abzugeben.`
-   
+   > `Das ganze Developerteam hat das finale Projektresultat kontrolliert und zugestimmt es so abzugeben. `
+
       
 
-## Dokumentation
+### Dokumentation
 
 ### 07-03-2023 (Sprint 1)
 
@@ -102,13 +105,14 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man Tictacto
 
 - Ersten Tasks abarbeiten
 - Organisation bereitstellen
+
 #### Tätigkeit
 
 Gestartet haben wir als Gruppe damit, die User-Stories zu notieren. Wir sind erstmals auf insgesamt 8 User-Stories gekommen. Dalibor schrieb die Akzeptanzkriterien zu den notierten User-Stories, während Damian diese im Projekt auf Azure DevOps eintrug und priorisierte. Pascal arbeitete in dieser Zeit am Use-Case-Diagramm. Nachdem das Product Backlog erstellt wurde, sassen wir erneut im Team zusammen und führten ein erstes Sprint Planning durch. Während dem ersten Modulblock lag unser Fokus vor allem auf der Planung und der korrekten Handhabung der vorgegebenen Hilfsmittel wie Azure DevOps und GitHub.
 
 #### Review & Retrospektive Protokoll
 
-In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund dafür ist unser Mangel an Planung wie mir die aufgaben in unserer Freizeit organisieren. Trotzdem wurde die Organisation sehr weit gebracht, was uns beim nächsten Sprint sicher sehr helfen wird.
+In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund dafür ist unser Mangel an Planung wie mir die Aufgaben in unserer Freizeit organisieren. Trotzdem wurde die Organisation sehr weit gebracht, was uns beim nächsten Sprint sicher sehr helfen wird.
 
 ### 14-03-2023 (Sprint 2)
 
@@ -122,7 +126,7 @@ In diesem Sprint ist haben wir leider nicht unser Sprintziel erreicht. Grund daf
 
 #### Tätigkeit
 
-Den zweiten Sprint starteten wir abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht relativ viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
+Den zweiten Sprint starteten wir abgelenkt von unserem Projekt, trotzdem haben wir im Unterricht viel erreicht und uns die Aufgaben von dem zweiten Sprint zugeteilt. die Wenigen Aufgaben, welche wir nicht im Unterricht erledigen konnten haben wir als Hausaufgaben erledigen.
 
 #### Review & Retrospektive Protokoll
 
@@ -142,9 +146,14 @@ wir haben dieses Mal uns besser ausserhalb von Unterricht organisiert. das einzi
 - Logik fertigstellen
   - Logik um zu Gewinnen implementieren
   - Undo Funktion implementieren
-
+- Projekt fertigstellen
 
 #### Tätigkeit
 
+Den dritten Sprint starteten wir motiviert, jedoch gab es Probleme beim Implementieren von dem Stack für die Undo Funktion was unseren Fortschritt einschränkte. Jedoch waren wir entschlossen ein Präsentables Produkt am Ende des Sprints zu haben.
+
 #### Review & Retrospektive Protokoll
 
+In diesem Sprint haben wir unser Sprintziel erreicht.
+wir haben diesen Sprint in unserer Freizeit viel Zeit investiert damit wir unser Ziel erreichen konnten. 
+Das hatte leider zur Folge, dass wir schnell an Motivation an dem Projekt verloren haben, trotzdem sind wir zufrieden mit dem Resultat.
