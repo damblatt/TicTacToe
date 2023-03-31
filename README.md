@@ -9,6 +9,8 @@
 
 → [Dokumentation](#dokumentation)
 
+&emsp;↳ [Unit Testing](#unit-testing)
+
 &emsp;↳ [Sprint 1](#07-03-2023-sprint-1)
 
 &emsp;↳ [Sprint 2](#14-03-2023-sprint-2)
@@ -98,6 +100,10 @@ Unser Ziel bei diesem Projekt ist ein Programm zu erstellen, in dem man TicTacTo
       
 
 ### Dokumentation
+
+### Unit Testing 
+
+Für einige Methoden haben wir Unit Tests geschrieben. Getestet haben wir nur öffentliche Methoden (public) wie zum Beispiel die Methode 'TryCreateCoordinate(string input)' aus der Klasse 'Coordinate' oder zum Beispiel den WinChecker.
 
 ### 07-03-2023 (Sprint 1)
 
