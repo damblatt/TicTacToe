@@ -9,11 +9,11 @@
 
 → [Dokumentation](#dokumentation)
 
-&emsp;↳ [Sprint 1](#14-03-2023-sprint-1)
+&emsp;↳ [Sprint 1](#07-03-2023-sprint-1)
 
 &emsp;↳ [Sprint 2](#14-03-2023-sprint-2)
 
-&emsp;↳ [Sprint 3](#14-03-2023-sprint-3)
+&emsp;↳ [Sprint 3](#21-03-2023-sprint-3)
 
 ## Projekt
 
