@@ -136,39 +136,25 @@ namespace TicTacToe
             SetIndividualPlayerInformation();
         }
 
-        /// <summary>
-        /// creates a new game field
-        /// </summary>
         private void CreateField()
         {
             Field = new Field();
         }
 
-        /// <summary>
-        /// prints the start screen for a few seconds
-        /// </summary>
         private void ShowStartScreen()
         {
+            Console.Clear();
             string _startScreenPath = "./StartScreen.txt";
             Utility.Write((File.ReadAllText(_startScreenPath)));
-            //Utility.Write(
-            //     "\r\n  _______ _   _______      _______             _       \r\n |__   __(_) |__   __|    |__   __|           (_)      \r\n    | |   _  ___| | __ _  ___| | ___   ___     _  __ _ \r\n    | |  | |/ __| |/ _` |/ __| |/ _ \\ / _ \\   | |/ _` |\r\n    | |  | | (__| | (_| | (__| | (_) |  __/   | | (_| |\r\n    |_|  |_|\\___|_|\\__,_|\\___|_|\\___/ \\___|   | |\\__,_|\r\n                                             _/ |      \r\n                                            |__/       \r\n"
-            //);
             Thread.Sleep( 2000 );
         }
 
-        /// <summary>
-        /// prints the end screen of the game
-        /// </summary>
         private void ShowWinScreen()
         {
             Console.Clear();
             Utility.Write(_winner.Name + " has won the game!");
         }
 
-        /// <summary>
-        /// prints the end screen of the game
-        /// </summary>
         private void ShowDrawScreen()
         {
             Console.Clear();
